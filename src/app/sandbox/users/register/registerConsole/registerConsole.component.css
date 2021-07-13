@@ -1,0 +1,35 @@
+.btn-link {
+    color: #31708f;
+    font-weight: normal;
+    border-radius: 0;
+    font-size: 14px;
+    padding: 6px 6px;
+}
+
+.row {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.app-ace-editor {
+    border: 2px solid #f8f9fa;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    width: 50%;
+    height: 250px;
+}
+
+fieldset {
+    position: relative;
+    overflow: auto;
+}
+
+.tabcontent {
+    min-width: 75%;
+    box-sizing: border-box;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+}

@@ -1,0 +1,80 @@
+<div class="profile-sidebar">
+	<!-- <div class="widget-profile pro-widget-content">
+		<div class="profile-info-widget">
+			<div class="profile-det-info">
+				<h3>Richard Wilson</h3>
+			</div>
+		</div>
+	</div> -->
+	<div class="dashboard-widget">
+		<nav class="dashboard-menu">
+			<ul>
+				<li>
+					<a [routerLink]="'dashboard'" (click)="navigate('Dashboard')">
+						<i class="fas fa-columns"></i>
+						<span>Collections</span>
+					</a>
+				</li>
+				<li>
+					<span (click)="toggle($event)" id="users">
+						<i class="fas fa-user"></i>
+						<span style="margin-left: 5px;"> Users<i class="fas fa-chevron-{{userLevel}}" style="float: right;"></i></span>
+					</span>
+					<ul *ngIf="user">
+						<li [class.active]="name === 'Register'">
+							<a [routerLink]="'users/register'" (click)="navigate('Register')">
+								<span class="badge badge-warning">POST </span> /users/register/ - POST
+							</a>
+						</li>
+						<li [class.active]="name === 'Login'">
+							<a [routerLink]="'users/login'" (click)="navigate('Login')">
+								<span class="badge badge-warning">POST </span> /users/login/ - POST
+							</a>
+						</li>
+						<li [class.active]="name === 'ApiKey'">
+							<a [routerLink]="'users/apiKey'" (click)="navigate('ApiKey')">
+								<span class="badge badge-success">GET </span> /users/getApiKey/ - GET
+							</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<span (click)="toggle($event)" id="quotations">
+						<i class="fas fa-clipboard-check"></i>
+						<span style="margin-left: 5px;"> Quotations<i class="fas fa-chevron-{{quoteLevel}}" style="float: right;"></i></span>
+					</span>
+					<ul *ngIf="quote">
+						<li [class.active]="name === 'requestQuote'">
+							<a [routerLink]="'users/register'" (click)="navigate('requestQuote')">
+								<span class="badge badge-warning">POST </span> /quotations/requestQuote - POST
+							</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<span (click)="toggle($event)" id="delivery">
+						<i class="fas fa-shipping-fast"></i>
+						<span style="margin-left: 5px;"> Delivery<i class="fas fa-chevron-{{deliveryLevel}}" style="float: right;"></i></span>
+					</span>
+					<ul *ngIf="delivery">
+						<li [class.active]="name === 'requestDelivery'">
+							<a [routerLink]="'users/register'" (click)="navigate('requestDelivery')">
+								<span class="badge badge-warning">POST </span> /delivery/requestDelivery - POST
+							</a>
+						</li>
+						<li [class.active]="name === 'GETdelivery'">
+							<a [routerLink]="'users/login'" (click)="navigate('GETdelivery')">
+								<span class="badge badge-warning">GET </span> /delivery - POST
+							</a>
+						</li>
+						<li [class.active]="name === 'PUTdelivery'">
+							<a [routerLink]="'users/apiKey'" (click)="navigate('PUTdelivery')">
+								<span class="badge badge-success">GET </span> /delivery - GET
+							</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+	</div>
+</div>

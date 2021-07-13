@@ -18,6 +18,16 @@ const routes: Routes = [
         loadChildren: () =>
           import('./users/users.module').then((m) => m.UsersModule),
       },
+      {
+        path: 'quotations',
+        loadChildren: () =>
+          import('./quotations/quotations.module').then((m) => m.QuotationsModule),
+      },
+      {
+        path: 'delivery',
+        loadChildren: () =>
+          import('./delivery/delivery.module').then((m) => m.DeliveryModule),
+      },
       // { 
       //   path: 'favourites',
       //   loadChildren: () =>

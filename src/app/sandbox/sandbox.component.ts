@@ -24,14 +24,16 @@ export class PatientsComponent implements OnInit {
       if (event instanceof NavigationStart) {
         if (
           event.url === "/sandbox/dashboard" ||
-          event.url === "/sandbox/users" ||
           event.url === "/sandbox/users/register" ||
           event.url === "/sandbox/users/register/console" ||
           event.url === "/sandbox/users/login" ||
           event.url === "/sandbox/users/login/console" ||
           event.url === "/sandbox/users/apiKey" ||
           event.url === "/sandbox/users/apiKey/console" ||
-          event.url === "/sandbox/quotations" ||
+          event.url === "/sandbox/quotations/requestQuote" ||
+          event.url === "/sandbox/quotations/requestQuote/console" ||
+          event.url === "/sandbox/delivery/requestDelivery" ||
+          event.url === "/sandbox/delivery/requestDelivery/console" ||
           event.url === "/sandbox/component"
         ) {
           this.patientSidebar = true;
@@ -50,6 +52,10 @@ export class PatientsComponent implements OnInit {
       this.url === "/sandbox/users/apiKey" ||
       this.url === "/sandbox/users/apiKey/console" ||
       this.url === "/sandbox/quotations" ||
+      this.url === "/sandbox/quotations/requestQuote" ||
+      this.url === "/sandbox/quotations/requestQuote/console" ||
+      this.url === "/sandbox/delivery/requestDelivery" ||
+      this.url === "/sandbox/delivery/requestDelivery/console" ||
       this.url === "/sandbox/component"
     ) {
       this.patientSidebar = true;

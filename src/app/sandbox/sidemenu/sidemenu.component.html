@@ -45,7 +45,7 @@
 					</span>
 					<ul *ngIf="quote">
 						<li [class.active]="name === 'requestQuote'">
-							<a [routerLink]="'users/register'" (click)="navigate('requestQuote')">
+							<a [routerLink]="'quotations/requestQuote'" (click)="navigate('requestQuote')">
 								<span class="badge badge-warning">POST </span> /quotations/requestQuote - POST
 							</a>
 						</li>
@@ -58,17 +58,17 @@
 					</span>
 					<ul *ngIf="delivery">
 						<li [class.active]="name === 'requestDelivery'">
-							<a [routerLink]="'users/register'" (click)="navigate('requestDelivery')">
+							<a [routerLink]="'delivery/requestDelivery'" (click)="navigate('requestDelivery')">
 								<span class="badge badge-warning">POST </span> /delivery/requestDelivery - POST
 							</a>
 						</li>
-						<li [class.active]="name === 'GETdelivery'">
-							<a [routerLink]="'users/login'" (click)="navigate('GETdelivery')">
-								<span class="badge badge-warning">GET </span> /delivery - POST
+						<li [class.active]="name === 'putDelivery'">
+							<a [routerLink]="'users/apiKey'" (click)="navigate('putDdelivery')">
+								<span class="badge badge-put">PUT </span> /delivery - PUT
 							</a>
 						</li>
-						<li [class.active]="name === 'PUTdelivery'">
-							<a [routerLink]="'users/apiKey'" (click)="navigate('PUTdelivery')">
+						<li [class.active]="name === 'getDelivery'">
+							<a [routerLink]="'users/login'" (click)="navigate('getDelivery')">
 								<span class="badge badge-success">GET </span> /delivery - GET
 							</a>
 						</li>

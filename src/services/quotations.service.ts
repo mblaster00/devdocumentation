@@ -1,6 +1,19 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
-@Injectable()
+export interface AccessInfo {
+    token: string
+}
+
+@Injectable({
+    providedIn: 'root'
+})
+
 export class QuotationsService {
-    constructor() { }
+    constructor(private http: HttpClient) { }
+
+    requestQuote(data) {
+        return this.http.post(environment.apiUrl + 'quotations/requestQuote', data)
+    }
 }

@@ -1,6 +1,18 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
-@Injectable()
+export interface AccessInfo {
+    token: string
+}
+@Injectable({
+    providedIn: 'root'
+})
+
 export class DeliveryService {
-    constructor() { }
+    constructor(private http: HttpClient) { }
+
+    requestDelivery(data) {
+        return this.http.post(environment.apiUrl + 'delivery/requestDelivery', data)
+    }
 }

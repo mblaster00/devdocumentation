@@ -8,11 +8,11 @@ import { Location } from "@angular/common";
   templateUrl: "./sandbox.component.html",
   styleUrls: ["./sandbox.component.css"],
 })
-export class PatientsComponent implements OnInit {
+export class SandboxComponent implements OnInit {
   adminShow: boolean = true;
   splitVal;
   base = "Sandbox";
-  page = "Dashboard";
+  page = "Collections";
   url;
   patientSidebar: boolean = false;
   constructor(
@@ -23,7 +23,7 @@ export class PatientsComponent implements OnInit {
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationStart) {
         if (
-          event.url === "/sandbox/dashboard" ||
+          event.url === "/sandbox/collections" ||
           event.url === "/sandbox/users/register" ||
           event.url === "/sandbox/users/register/console" ||
           event.url === "/sandbox/users/login" ||
@@ -44,7 +44,7 @@ export class PatientsComponent implements OnInit {
     });
     this.url = location.path();
     if (
-      this.url === "/sandbox/dashboard" ||
+      this.url === "/sandbox/collections" ||
       this.url === "/sandbox/users/register" ||
       this.url === "/sandbox/users/register/console" ||
       this.url === "/sandbox/users/login" ||

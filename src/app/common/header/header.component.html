@@ -30,7 +30,7 @@
                     <div class="left">
                         <ul>
                             <li><span><i class="fas fa-phone-alt"></i> Contact Number : 090 9876::3456</span></li>
-                            <li><span><i class="fas fa-map-marker-alt"></i> Location : 22, South Wales, New York</span>
+                            <li><span><i class="fas fa-map-marker-alt"></i> Location : 22, Dakar, Senegal</span>
                             </li>
                         </ul>
                     </div>
@@ -81,11 +81,11 @@
                 <li [class.active]="base === ''">
                     <a [routerLink]="''">Home</a>
                 </li>
-                <li class="has-submenu">
+                <li [class.active]="base === 'documentation'" class="has-submenu">
                     <a [routerLink]="'login-page'">Documentation</a>
                 </li>
-                <li class="has-submenu">
-                    <a [routerLink]="'sandbox/dashboard'">API Sanbox</a>
+                <li [class.active]="base === 'sandbox'" class="has-submenu">
+                    <a [routerLink]="'sandbox/users/register'">API Sanbox</a>
                 </li>
                 <!-- <li [class.active]="base === 'map-grid'" class="has-submenu" (click)="addStyle('patient')"
                     routerLinkActive="active">

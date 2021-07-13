@@ -10,8 +10,32 @@ const routes: Routes = [
   {
     path: 'sandbox',
     loadChildren: () =>
-      import('./sandbox/sandbox.module').then((m) => m.PatientsModule),
+      import('./sandbox/sandbox.module').then((m) => m.SandboxModule),
   },  
+  {
+    path: 'login-page',
+    loadChildren: () =>
+      import('./login/login.module').then((m) => m.LoginModule),
+  },
+  {
+    path: 'forgot-password',
+    loadChildren: () =>
+      import('./forgot-password/forgot-password.module').then(
+        (m) => m.ForgotPasswordModule
+      ),
+  },
+  {
+    path: 'Register',
+    loadChildren: () =>
+      import('./register/register.module').then((m) => m.RegisterModule),
+  },
+  {
+    path: 'change-password',
+    loadChildren: () =>
+      import('./change-password/change-password.module').then(
+        (m) => m.ChangePasswordModule
+      ),
+  },
   // {
   //   path: 'doctor',
   //   loadChildren: () =>
@@ -62,30 +86,6 @@ const routes: Routes = [
   //     import('./blog-details/blog-details.module').then(
   //       (m) => m.BlogDetailsModule
   //     ),
-  // },
-  // {
-  //   path: 'login-page',
-  //   loadChildren: () =>
-  //     import('./login/login.module').then((m) => m.LoginModule),
-  // },
-  // {
-  //   path: 'change-password',
-  //   loadChildren: () =>
-  //     import('./change-password/change-password.module').then(
-  //       (m) => m.ChangePasswordModule
-  //     ),
-  // },
-  // {
-  //   path: 'forgot-password',
-  //   loadChildren: () =>
-  //     import('./forgot-password/forgot-password.module').then(
-  //       (m) => m.ForgotPasswordModule
-  //     ),
-  // },
-  // {
-  //   path: 'Register',
-  //   loadChildren: () =>
-  //     import('./register/register.module').then((m) => m.RegisterModule),
   // },
   // {
   //   path: 'video-call',

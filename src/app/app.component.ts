@@ -24,10 +24,8 @@ import { LinkService } from "./link.service";
   encapsulation: ViewEncapsulation.None,
 })
 
-
-
 export class AppComponent implements OnInit, AfterViewChecked {
-  title = 'devdocumentation';
+  title = 'Ecommerce API';
   url;
   loadFooter = false;
   show: boolean = true;
@@ -54,25 +52,10 @@ export class AppComponent implements OnInit, AfterViewChecked {
           event.url == "/Register"
         ) {
           document.querySelector("body").classList.add("account-page");
-          // document.querySelector('body').classList.remove('mat-typography');
           if (event.url == "/login") {
             this.Router.navigateByUrl("/login");
           }
         } else {
-          document.querySelector("body").classList.remove("account-page");
-          // document.querySelector('body').classList.add('mat-typography');
-        }
-        if (event.url == "/map-grid") {
-          this.hideFooter = true;
-        }
-        if (event.url == "/map-list") {
-          this.hideFooter = true;
-        }
-        if (event.url == "/video-call" || event.url == "/voice-call") {
-          document.querySelector("body").classList.add("call-page");
-          // document.querySelector('body').classList.remove('mat-typography');
-        } else {
-          document.querySelector("body").classList.remove("call-page");
           // document.querySelector('body').classList.add('mat-typography');
         }
       }
@@ -97,7 +80,8 @@ export class AppComponent implements OnInit, AfterViewChecked {
   }
 
   ngOnInit() {
-    setTimeout(() => (this.loadFooter = true), 2000);
+    //setTimeout(() => (this.loadFooter = true), 2000);
+    setTimeout(() => (this.loadFooter = true));
   }
 
   ngAfterViewChecked() {

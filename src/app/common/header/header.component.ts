@@ -15,7 +15,7 @@ import { CommonServiceService } from './../../common-service.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, AfterViewInit {
   auth: boolean = false;
   isPatient: boolean = false;
   splitVal;
@@ -46,10 +46,10 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
-    if(this.base === 'home'){
+
+    if (this.base === 'home') {
       $('#header').addClass('min-header');
-    }else{
+    } else {
       $('#header').removeClass('min-header');
     }
     if (localStorage.getItem('auth') === 'true') {
@@ -63,27 +63,25 @@ export class HeaderComponent implements OnInit {
         this.base = this.splitVal[1];
         this.page = this.splitVal[2];
         if (
-          this.base === 'doctor' ||
           (this.base === 'patients' && this.page === 'dashboard') ||
-          this.base === 'change-password' ||
-          this.base === 'voice-call' ||
-          this.base === 'video-call' ||
-          (this.base === 'patients' && this.page === 'favourites') ||
-          (this.base === 'patients' && this.page === 'message') ||
-          (this.base === 'patients' && this.page === 'settings')
+          this.base === '' ||
+          this.base === 'home' ||
+          this.base === 'sandbox' ||
+          this.base === 'documentation' ||
+          this.base === 'faqs'
         ) {
-          this.auth = true;
-        } else {
           this.auth = false;
+        } else {
+          this.auth = true;
         }
       }
-        if (event instanceof NavigationEnd) {
+      if (event instanceof NavigationEnd) {
         $('html').removeClass('menu-opened');
         $('.sidebar-overlay').removeClass('opened');
         $('main-wrapper').removeClass('slide-nav');
       }
     });
-  this.router.events.subscribe((event: Event) => {
+    this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
         $("html").removeClass("menu-opened");
         $(".sidebar-overlay").removeClass("opened");
@@ -94,29 +92,22 @@ export class HeaderComponent implements OnInit {
 
   ngAfterViewInit() {
     this.cdr.detectChanges();
-     this.loadDynmicallyScript("assets/js/script.js");
+    this.loadDynmicallyScript("assets/js/script.js");
   }
-loadDynmicallyScript(js) {
+  loadDynmicallyScript(js) {
     var script = document.createElement("script");
     script.src = js;
     script.async = false;
     document.head.appendChild(script);
     script.onload = () => this.doSomethingWhenScriptIsLoaded();
   }
-  doSomethingWhenScriptIsLoaded() {}
+  doSomethingWhenScriptIsLoaded() { }
   change(name) {
     this.page = name;
     this.commonService.nextmessage("main");
   }
-  mapGrid() {
-    this.router.navigate(['/map-grid']);
-  }
 
-  mapList() {
-    this.router.navigate(['/map-list']);
-  }
-
-   addStyle(val) {
+  addStyle(val) {
     if (val === "doctor") {
       if (document.getElementById("doctor").style.display == "block") {
         document.getElementById("doctor").style.display = "none";
@@ -146,6 +137,7 @@ loadDynmicallyScript(js) {
       }
     }
   }
+
   logout() {
     localStorage.clear();
     this.auth = false;

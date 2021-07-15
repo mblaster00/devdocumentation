@@ -11,7 +11,12 @@ const routes: Routes = [
     path: 'sandbox',
     loadChildren: () =>
       import('./sandbox/sandbox.module').then((m) => m.SandboxModule),
-  },  
+  },
+  {
+    path: 'documentation',
+    loadChildren: () =>
+      import('./documentation/documentation.module').then((m) => m.DocumentationModule),
+  },    
   {
     path: 'login-page',
     loadChildren: () =>
@@ -30,21 +35,21 @@ const routes: Routes = [
       import('./register/register.module').then((m) => m.RegisterModule),
   },
   {
-    path: 'change-password',
+    path: 'clients',
     loadChildren: () =>
-      import('./change-password/change-password.module').then(
-        (m) => m.ChangePasswordModule
-      ),
+      import('./clients/clients.module').then((m) => m.ClientsModule),
   },
+  // {
+  //   path: 'change-password',
+  //   loadChildren: () =>
+  //     import('./clients/change-password/change-password.module').then(
+  //       (m) => m.ChangePasswordModule
+  //     ),
+  // },
   // {
   //   path: 'doctor',
   //   loadChildren: () =>
   //     import('./doctor/doctor.module').then((m) => m.DoctorModule),
-  // },
-  // {
-  //   path: 'patients',
-  //   loadChildren: () =>
-  //     import('./patients/patients.module').then((m) => m.PatientsModule),
   // },
   // {
   //   path: 'blank',

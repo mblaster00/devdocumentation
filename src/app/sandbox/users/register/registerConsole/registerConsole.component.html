@@ -3,7 +3,7 @@
         <h2>Users - Console</h2>
     </div>
     <div class="card-body pt-0"><br>
-        <div>This operation is used to claim a consent by the account holder for the requested scopes.</div>
+        <div>This operation is used to register as a client of Logidoo Ecommerce API.</div>
         <div class="panel"><br>
             <form name="form" #reset="ngForm" (ngSubmit)="Submit()" class="needs-validation">
                 <h4><b> Query parameters</b></h4>
@@ -37,7 +37,7 @@
                     <div id="httpRequest" class="tabcontent">
                         <pre>
                         <code data-bind="text: requestSummary" title="Double click to select all.">
-POST https://localhost:9000/api/users/register HTTP/1.1
+POST http://localhost:9000/api/users/register HTTP/1.1
 Host: localhost:9000
 Content-Type: {{ contentType }}
 <span *ngIf="parameterValue != null" id="parameter"></span>

@@ -11,7 +11,7 @@
 						</div>
 						<div class="col-md-12 col-lg-6 login-right">
 							<div class="login-header">
-								<h3>Login <span>Doccure</span></h3>
+								<h3>Login<a href="javascript:void(0)" >Ecommerce API</a></h3>
 							</div>
 							<form>
 								<div class="form-group form-focus">
@@ -24,29 +24,18 @@
 									<label class="focus-label">Password<span class="required">*</span></label>
 								</div>
 
-								<div>
+								<!-- <div>
 									<label class="custom_check">
 										<input type="checkbox" name="gender_type" [(ngModel)]="isPatient" (click)="checkType($event)"  >
 										<span class="checkmark"></span> Patients
 									</label>
-								</div>
+								</div> -->
 
 								<div class="text-right">
 									<a class="forgot-link"  [routerLink]="'/forgot-password'">Forgot Password ?</a>
 								</div>
-								<button class="btn btn-primary btn-block btn-lg login-btn" type="submit" (click)="login(this.username,this.password)">Login</button>
-								<div class="login-or">
-									<span class="or-line"></span>
-									<span class="span-or">or</span>
-								</div>
-								<div class="row form-row social-login">
-									<div class="col-6">
-										<a href="javascript:void(0)" class="btn btn-facebook btn-block"><i class="fab fa-facebook-f mr-1"></i> Login</a>
-									</div>
-									<div class="col-6">
-										<a class="btn btn-google btn-block"><i class="fab fa-google mr-1"></i> Login</a>
-									</div>
-								</div>
+								<!-- <button class="btn btn-primary btn-block btn-lg login-btn" type="submit" (click)="login(this.username,this.password)">Login</button> -->
+								<button [routerLink]="'/clients/home'" class="btn btn-primary btn-block btn-lg login-btn" type="submit">Login</button>
 								<div class="text-center dont-have">Don’t have an account? <a  [routerLink]="'/Register'">Register</a></div>
 							</form>
 						</div>

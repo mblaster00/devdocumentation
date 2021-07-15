@@ -22,7 +22,8 @@ export class UsersService {
         return this.http.post(environment.apiUrl + 'users/login', data)
     }
 
-    createUser() {
-        return this.http.get('http://localhost:9000/api/seeds/createUsers')
+    getApiKey(data){
+        var reqHeader = new HttpHeaders({ 'Authorization': 'Bearer ', "x-access-token": data.token});
+        return this.http.get(`${environment.apiUrl}keys/${data.userId}`, { headers: reqHeader })
     }
 }

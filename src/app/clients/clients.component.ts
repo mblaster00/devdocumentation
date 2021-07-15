@@ -1,17 +1,17 @@
 import { Component, OnInit } from "@angular/core";
 import { Event, NavigationStart, Router } from "@angular/router";
-import { CommonServiceService } from "./../common-service.service";
+import { CommonServiceService } from "../common-service.service";
 import { Location } from "@angular/common";
 
 @Component({
-  selector: "app-patients",
-  templateUrl: "./patients.component.html",
-  styleUrls: ["./patients.component.css"],
+  selector: "app-client",
+  templateUrl: "./clients.component.html",
+  styleUrls: ["./clients.component.css"],
 })
-export class PatientsComponent implements OnInit {
+export class ClientsComponent implements OnInit {
   splitVal;
-  base = "Patients";
-  page = "Dashboard";
+  base = "Client";
+  page = "Home";
   url;
   patientSidebar: boolean = false;
   constructor(
@@ -22,10 +22,8 @@ export class PatientsComponent implements OnInit {
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationStart) {
         if (
-          event.url === "/patients/dashboard" ||
-          event.url === "/patients/favourites" ||
-          event.url === "/patients/settings" ||
-          event.url === "/patients/message"
+          event.url === "/clients/home" ||
+          event.url === "/clients/change-password"
         ) {
           this.patientSidebar = true;
         } else {
@@ -35,10 +33,8 @@ export class PatientsComponent implements OnInit {
     });
     this.url = location.path();
     if (
-      this.url === "/patients/dashboard" ||
-      this.url === "/patients/favourites" ||
-      this.url === "/patients/settings" ||
-      this.url === "/patients/message"
+      this.url === "/clients/home" ||
+      this.url === "/clients/change-password"
     ) {
       this.patientSidebar = true;
     } else {

@@ -3,7 +3,7 @@
         <h2>Users - Console</h2>
     </div>
     <div class="card-body pt-0"><br>
-        <div>This operation is used to get API KEY to access to Logidoo Ecommerce API.</div>
+        <div>This operation is used to get API Key to access to Logidoo Ecommerce API.</div>
         <div class="panel"><br>
             <form name="form" #reset="ngForm" (ngSubmit)="Submit()" class="needs-validation">
                 <h4><b> Query parameters</b></h4>
@@ -11,14 +11,31 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group has-error">
-                                <input type="text" class="form-control" value="Content-type" placeholder="content-type"
+                                <input type="text" class="form-control" value="userId" placeholder="userId"
                                     readonly>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group has-feedback">
-                                <input type="text" [(ngModel)]="contentType" name="contentType" class="form-control"
-                                    (keyup)="onKey($event)" value="application/json">
+                                <input type="text" [(ngModel)]="userId" name="userId" class="form-control"
+                                    (keyup)="getuserId($event)" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h4><b> Headers</b></h4>
+                <div id="buildyourform">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group has-error">
+                                <input type="text" class="form-control" value="x-access-token" placeholder="x-access-token"
+                                    readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group has-feedback">
+                                <input type="text" [(ngModel)]="token" name="token" class="form-control"
+                                    (keyup)="getToken($event)" required>
                             </div>
                         </div>
                     </div>
@@ -27,33 +44,16 @@
                     <button (click)="addParameter()" id="addParameter" class="btn btn-link" type="button">
                         <i class="fas fa-plus" aria-hidden="true"></i> Add parameter
                     </button><br><br>
-                </div>
-                <!-- <div>
-                    <h4><b> Headers</b></h4>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <b>secret-key</b>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group has-feedback">
-                                <input type="textbox" [(ngModel)]="authorization" name="authorization" 
-                                class="form-control" (keyup)="onKey($event)" placeholder="value">
-                            </div>
-                        </div>
-                    </div>
-                </div><br> -->
-                <div>
-                    <h4><b> Request body</b></h4>
-                    <div class="app-ace-editor tabcontent" #editor></div>
                 </div><br>
                 <div>
                     <h4><b> HTTP request</b></h4>
                     <div id="httpRequest" class="tabcontent">
                         <pre>
                         <code data-bind="text: requestSummary" title="Double click to select all.">
-POST https://localhost:9000/api/users/login HTTP/1.1
+POST https://localhost:9000/api/keys/:userId HTTP/1.1
 Host: localhost:9000
-Content-Type: {{ contentType }}
+userId: {{ userId }}
+x-access-token: {{ token }}
 <span *ngIf="parameterValue != null" id="parameter"></span>
 {{ bodyRequest }}
                         </code></pre>

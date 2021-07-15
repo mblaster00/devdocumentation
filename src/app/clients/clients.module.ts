@@ -1,24 +1,21 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { PatientsRoutingModule } from './patients-routing.module';
-
-import { PatientsComponent } from './patients.component';
+import { ClientRoutingModule } from './clients-routing.module';
+import { ClientsComponent } from './clients.component';
 import { SidemenuComponent } from './sidemenu/sidemenu.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ComponentComponent } from './component/component.component';
 
 @NgModule({
   declarations: [
-    PatientsComponent,
+    ClientsComponent,
     SidemenuComponent,
-    ComponentComponent
+    // ComponentComponent
   ],
   imports: [
     CommonModule,
-    PatientsRoutingModule,
+    ClientRoutingModule,
     NgbModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class PatientsModule { }
+export class ClientsModule { }

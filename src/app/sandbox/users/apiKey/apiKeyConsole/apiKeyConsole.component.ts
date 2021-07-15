@@ -9,9 +9,8 @@ declare var $: any;
     templateUrl: './apiKeyConsole.component.html',
     styleUrls: ['./apiKeyConsole.component.css']
 })
-export class ApiKeyConsoleComponent implements OnInit, AfterViewInit {
-    @ViewChild("editor") private editor: ElementRef<HTMLElement>;
-
+export class ApiKeyConsoleComponent implements OnInit {
+    
     constructor(
         private userService: UsersService,
         private elementRef: ElementRef, private renderer: Renderer2
@@ -22,23 +21,18 @@ export class ApiKeyConsoleComponent implements OnInit, AfterViewInit {
     parameterName: string;
     parameterValue: string;
     contentType: string = "application/json";
+    userId: string;
+    token: string;
     bodyRequest: Object;
     values: string;
     bodyResponse: any;
 
-    ngAfterViewInit(): void {
-        ace.config.set('basePath', 'https://unpkg.com/ace-builds@1.4.12/src-noconflict');
-        const aceEditor = ace.edit(this.editor.nativeElement);
-        aceEditor.setTheme('ace/theme/twilight');
-        aceEditor.session.setMode("ace/mode/javascript");
-        aceEditor.on("change", () => {
-            this.bodyRequest = aceEditor.getValue()
-        });
-        this.renderer.listen(this.elementRef.nativeElement, 'keyup', () => { this.addHeader(); });
+    getuserId(event: any) {
+        this.userId = event.target.value;
     }
 
-    onKey(event: any) {
-        this.values = event.target.value;
+    getToken(event: any) {
+        this.token = event.target.value;
     }
 
     addHeader() {
@@ -59,11 +53,18 @@ export class ApiKeyConsoleComponent implements OnInit, AfterViewInit {
     }
 
     Submit() {
-        this.userService.login(this.bodyRequest).subscribe(res => {
+        let selector = $(".panel:last #httpResponse")
+            if (selector.length != 0)
+                selector.empty()
+        let data = {
+            userId: this.userId,
+            token: this.token || " "
+        }
+        this.userService.getApiKey(data).subscribe(res => {
             this.bodyResponse = res;
-            $(".panel:last").append(format.html.register(this.bodyResponse));
+            $(".panel:last").append(format.html.getKey(this.bodyResponse));
         }, err => {
-            console.log(err)
+            $(".panel:last").append(format.html.Error(err));
         })
     }
 }

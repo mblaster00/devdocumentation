@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {CommonServiceService  } from '../../common-service.service';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class HomeComponent implements OnInit {
   appointments ;
   patients ;
 

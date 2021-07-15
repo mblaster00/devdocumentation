@@ -65,6 +65,8 @@ export class HeaderComponent implements OnInit, AfterViewInit {
         if (
           (this.base === 'patients' && this.page === 'dashboard') ||
           this.base === '' ||
+          this.base === 'Register' ||
+          this.base === 'login-page' ||
           this.base === 'home' ||
           this.base === 'sandbox' ||
           this.base === 'documentation' ||

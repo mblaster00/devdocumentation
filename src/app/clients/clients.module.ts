@@ -8,8 +8,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     ClientsComponent,
-    SidemenuComponent,
-    // ComponentComponent
+    SidemenuComponent
   ],
   imports: [
     CommonModule,

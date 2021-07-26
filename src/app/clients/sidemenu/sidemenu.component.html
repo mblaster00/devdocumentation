@@ -22,6 +22,12 @@
 						<span>Home</span>
 					</a>
 				</li>
+				<li [class.active]="name === 'Operations'">
+					<a [routerLink]="'operations'" (click)="navigate('Operations')">
+						<i class="fas fa-tasks"></i>
+						<span>Operations</span>
+					</a>
+				</li>
 				<li [class.active]="name === 'Change-Password'">
 					<a [routerLink]="'change-password'" (click)="navigate('Change-Password')">
 						<i class="fas fa-lock"></i>

@@ -1,0 +1,71 @@
+<div class="card">
+    <!-- Tab Content -->
+    <div class="tab-content pt-0">
+        <!-- Appointment Tab -->
+        <div id="pat_appointments" class="tab-pane fade show active">
+            <div class="card card-table mb-0">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-center mb-0" *ngIf="bodyResponse">
+                            <thead>
+                                <tr>
+                                    <th>Operation</th>
+                                    <th>Op Date</th>
+                                    <th>From</th>
+                                    <th>To</th>
+                                    <th>Items</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let operation of bodyResponse.data; let i = index;">
+                                    <td>
+                                        <h2 class="table-avatar">
+                                            <a  class="avatar avatar-sm mr-2">
+                                                <img class="avatar-img rounded-circle"
+                                                    src="assets/img/doctors/doctor-thumb-04.jpg" alt="User Image">
+                                            </a>
+                                            <a>{{ operation.dropoffContactFullName }}
+                                                <span>Receiver</span></a>
+                                        </h2>
+                                    </td>
+                                    <td>{{ operation.created_at | date: 'dd MMM yyyy' }} <span class="d-block text-info">{{ operation.created_at | date:'shortTime' }} </span></td>
+                                    <td>{{ operation.quoteId.pickupLocationAddress }}</td>
+                                    <td>{{ operation.quoteId.dropoffLocationAddress }}</td>
+                                    <td>{{ operation.quoteId.items.length }}</td>
+                                    <td *ngIf="operation.quoteId.status == 'Pending'">
+                                        <span class="badge badge-pill bg-warning-light">{{ operation.quoteId.status }}</span>
+                                    </td>
+                                    <td *ngIf="operation.quoteId.status == 'Confirm'">
+                                        <span class="badge badge-pill bg-success-light">{{ operation.quoteId.status }}</span>
+                                    </td>
+                                    <td *ngIf="operation.quoteId.status == 'Cancelled'">
+                                        <span class="badge badge-pill bg-danger-light">{{ operation.quoteId.status }}</span>
+                                    </td>
+                                </tr>
+                               
+                                <tr>
+                                    <td>
+                                        <h2 class="table-avatar">
+                                            <a class="avatar avatar-sm mr-2">
+                                                <img class="avatar-img rounded-circle"
+                                                    src="assets/img/doctors/doctor-thumb-06.jpg" alt="User Image">
+                                            </a>
+                                            <a>Dr. Katharine Berthold
+                                                <span>Orthopaedics</span></a>
+                                        </h2>
+                                    </td>
+                                    <td>8 Nov 2019 <span class="d-block text-info">9.00 AM</span></td>
+                                    <td>6 Nov 2019</td>
+                                    <td>10 Nov 2019</td>
+                                    <td>$175</td>
+                                    <td><span class="badge badge-pill bg-danger-light">Cancelled</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

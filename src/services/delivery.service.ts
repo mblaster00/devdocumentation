@@ -26,4 +26,9 @@ export class DeliveryService {
         var reqHeader = new HttpHeaders({ 'Authorization': 'Bearer ', "secret-token": data.secret});
         return this.http.delete(`${environment.apiUrl}delivery/${data.quoteId}`, { headers: reqHeader })
     }
+
+    getAll(data){
+        var reqHeader = new HttpHeaders({ 'Authorization': 'Bearer ', "x-access-token": data.token});
+        return this.http.get(`${environment.apiUrl}delivery/getAll/${data.userId}`, { headers: reqHeader })
+    }
 }

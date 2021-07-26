@@ -27,7 +27,7 @@ export class ClientsComponent implements OnInit {
         ) {
           this.patientSidebar = true;
         } else {
-          this.patientSidebar = false;
+          this.patientSidebar = true;
         }
       }
     });
@@ -38,7 +38,7 @@ export class ClientsComponent implements OnInit {
     ) {
       this.patientSidebar = true;
     } else {
-      this.patientSidebar = false;
+      this.patientSidebar = true;
     }
   }
 

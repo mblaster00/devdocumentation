@@ -6,9 +6,7 @@ import { DeliveryService } from 'src/services/delivery.service';
     templateUrl: './operations.component.html',
     styleUrls: ['./operations.component.css']
 })
-export class OperationsComponent implements OnInit {
-
- 
+export class OperationsComponent implements OnInit { 
     contentType: string = "application/json";
     token: string = localStorage.getItem('x-access-token');
     userId: string = localStorage.getItem('current_user');

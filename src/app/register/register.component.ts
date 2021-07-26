@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ElementRef, OnInit, Renderer2 } from '@angula
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import Swal from 'sweetalert2';
 import { UsersService } from 'src/services/users.service';
 declare var $: any;
 
@@ -23,9 +24,9 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     public router: Router
   ) {
     this.validation()
-   }
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   validation() {
     this.myForm = this.formBuilder.group({
@@ -69,6 +70,12 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     };
     this.userService.register(params).subscribe((res) => {
       this.success = true
+      Swal.fire({
+          icon: 'success',
+          title: 'Congratulations',
+          text: 'You have just created an account on the Logidoo Ecommerce API. Please wait while our team validates your account',
+          confirmButtonColor: '#000000',
+        });
       this.router.navigate(['/login-page']);
     }, err => {
       this.error = true

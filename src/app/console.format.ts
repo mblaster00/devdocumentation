@@ -30,14 +30,9 @@ export const html = {
                 <div id="httpRequest" style="min-width: 75%;box-sizing: border-box;padding: 6px 12px;border: 1px solid #ccc;">
                 <pre data-bind="selectAll: { on: 'dblclick' }" title="Double click to select all.">
                 <code data-bind="text: requestSummary" title="Double click to select all.">
-Date: ${bodyResponse.data.updated_at}
 Content-Type: application/json
-{
-"data": {
-    "_id": ${bodyResponse.data._id}
-},
-"accessToken": ${bodyResponse.accessToken}
-}
+
+"data": ${JSON.stringify(bodyResponse,null,'\t')}
                 </code>
             </pre>
                 </div>
@@ -54,10 +49,24 @@ Content-Type: application/json
                 <div id="httpRequest" style="min-width: 75%;box-sizing: border-box;padding: 6px 12px;border: 1px solid #ccc;">
                 <pre data-bind="selectAll: { on: 'dblclick' }" title="Double click to select all.">
                 <code data-bind="text: requestSummary" title="Double click to select all.">
-Date: ${bodyResponse.data.updated_at}
-"data": {
-    "key": ${bodyResponse.data.secretToken}
-}
+"data": ${JSON.stringify(bodyResponse.data,null,'\t')}
+                </code>
+            </pre>
+                </div>
+            </div>
+        `);
+    },
+
+    delivery: function myFunction(bodyResponse) {
+        return $(`
+        <div id="httpResponse"><br>
+                <h4><b> Response status</b></h4>
+                <p style="color: green;">200 OK</p>
+                <h4><b> Response content</b></h4>
+                <div id="httpRequest" style="min-width: 75%;box-sizing: border-box;padding: 6px 12px;border: 1px solid #ccc;">
+                <pre data-bind="selectAll: { on: 'dblclick' }" title="Double click to select all.">
+                <code data-bind="text: requestSummary" title="Double click to select all.">
+"data": ${JSON.stringify(bodyResponse.data,null,'\t')}
                 </code>
             </pre>
                 </div>
@@ -69,19 +78,29 @@ Date: ${bodyResponse.data.updated_at}
         return $(`
         <div id="httpResponse"><br>
                 <h4><b> Response status</b></h4>
+                <p style="color: green;">200 OK</p>
+                <h4><b> Response content</b></h4>
+                <div id="httpRequest" style="min-width: 75%;box-sizing: border-box;padding: 6px 12px;border: 1px solid #ccc;">
+                <pre data-bind="selectAll: { on: 'dblclick' }" title="Double click to select all.">
+                <code data-bind="text: requestSummary" title="Double click to select all.">
+"data": ${JSON.stringify(bodyResponse.data,null,'\t')}
+                </code>
+            </pre>
+                </div>
+            </div>
+        `);
+    },
+
+    delDelivery: function myFunction(bodyResponse) {
+        return $(`
+        <div id="httpResponse"><br>
+                <h4><b> Response status</b></h4>
                 <p style="color: green;">201 Created</p>
                 <h4><b> Response content</b></h4>
                 <div id="httpRequest" style="min-width: 75%;box-sizing: border-box;padding: 6px 12px;border: 1px solid #ccc;">
                 <pre data-bind="selectAll: { on: 'dblclick' }" title="Double click to select all.">
                 <code data-bind="text: requestSummary" title="Double click to select all.">
-Date: ${bodyResponse.body.created_at}
-"data": {
-    "quoteId": ${bodyResponse.data.quoteId},
-    "totalItemsWeight": ${bodyResponse.data.totalItemsWeight},
-    "totalItemsPrice": ${bodyResponse.data.totalItemsPrice},
-    "totalshipmentPrice": ${bodyResponse.data.totalshipmentPrice},
-    "shipmentCurrencyCode": ${bodyResponse.data.shipmentCurrencyCode}
-}
+"data": "data": ${JSON.stringify(bodyResponse.data,null,'\t')}
                 </code>
             </pre>
                 </div>
@@ -98,14 +117,7 @@ Date: ${bodyResponse.body.created_at}
                 <div id="httpRequest" style="min-width: 75%;box-sizing: border-box;padding: 6px 12px;border: 1px solid #ccc;">
                 <pre data-bind="selectAll: { on: 'dblclick' }" title="Double click to select all.">
                 <code data-bind="text: requestSummary" title="Double click to select all.">
-Date: ${bodyResponse.body.created_at}
-"data": {
-    "quoteId": ${bodyResponse.data.quoteId},
-    "totalItemsWeight": ${bodyResponse.data.totalItemsWeight},
-    "totalItemsPrice": ${bodyResponse.data.totalItemsPrice},
-    "totalshipmentPrice": ${bodyResponse.data.totalshipmentPrice},
-    "shipmentCurrencyCode": ${bodyResponse.data.shipmentCurrencyCode}
-}
+"data": ${JSON.stringify(bodyResponse.data,null,'\t')}
                 </code>
             </pre>
                 </div>
@@ -113,21 +125,34 @@ Date: ${bodyResponse.body.created_at}
         `);
     },
 
-    delivery: function myFunction(bodyResponse) {
+    getQuote: function myFunction(bodyResponse) {
         return $(`
         <div id="httpResponse"><br>
                 <h4><b> Response status</b></h4>
-                <p style="color: green;">201 Created</p>
+                <p style="color: green;">200 OK</p>
                 <h4><b> Response content</b></h4>
                 <div id="httpRequest" style="min-width: 75%;box-sizing: border-box;padding: 6px 12px;border: 1px solid #ccc;">
                 <pre data-bind="selectAll: { on: 'dblclick' }" title="Double click to select all.">
                 <code data-bind="text: requestSummary" title="Double click to select all.">
-"data": {
-    "shippingNumber": ${bodyResponse.data.shippingNumber},
-    "status": ${bodyResponse.data.status},
-    "createdAt": ${bodyResponse.data.createdAt},
-    "trackingNumber": ${bodyResponse.data.trackingNumber}
-}
+
+"data": ${JSON.stringify(bodyResponse.data,null,'\t')}
+                </code>
+            </pre>
+                </div>
+            </div>
+        `);
+    },
+
+    delQuote: function myFunction(bodyResponse) {
+        return $(`
+        <div id="httpResponse"><br>
+                <h4><b> Response status</b></h4>
+                <p style="color: green;">200 OK</p>
+                <h4><b> Response content</b></h4>
+                <div id="httpRequest" style="min-width: 75%;box-sizing: border-box;padding: 6px 12px;border: 1px solid #ccc;">
+                <pre data-bind="selectAll: { on: 'dblclick' }" title="Double click to select all.">
+                <code data-bind="text: requestSummary" title="Double click to select all.">
+"data": ${JSON.stringify(bodyResponse.message,null,'\t')}
                 </code>
             </pre>
                 </div>
@@ -144,19 +169,12 @@ Date: ${bodyResponse.body.created_at}
                 <div id="httpRequest" style="min-width: 75%;box-sizing: border-box;padding: 6px 12px;border: 1px solid #ccc;">
                 <pre data-bind="selectAll: { on: 'dblclick' }" title="Double click to select all.">
                 <code data-bind="text: requestSummary" title="Double click to select all.">
-"Message": ${bodyResponse.error.error}
+"Message": ${JSON.stringify(bodyResponse.error.error,null,'\t')}
                 </code>
             </pre>
                 </div>
             </div>
         `);
     },
-
-
-
-
-
-
-
 };
   

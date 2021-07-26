@@ -22,7 +22,7 @@ export class ConsoleComponent implements OnInit {
     parameterValue: string;
     contentType: string = "application/json";
     deliveryId: string;
-    token: string = localStorage.getItem('secret-token');
+    secret: string = localStorage.getItem('secret-token');
     bodyRequest: Object;
     values: string;
     bodyResponse: any;
@@ -32,7 +32,7 @@ export class ConsoleComponent implements OnInit {
     }
 
     getToken(event: any) {
-        this.token = event.target.value;
+        this.secret = event.target.value;
     }
 
     addHeader() {
@@ -58,7 +58,7 @@ export class ConsoleComponent implements OnInit {
                 selector.empty()
         let data = {
             deliveryId: this.deliveryId,
-            token: this.token
+            secret: this.secret
         }
         this.deliveryService.getDelivery(data).subscribe(res => {
             this.bodyResponse = res;

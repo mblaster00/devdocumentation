@@ -19,12 +19,12 @@ export class QuotationsService {
     }
 
     getQuote(data){
-        var reqHeader = new HttpHeaders({ 'Authorization': 'Bearer ', "secret-token": data.token});
-        return this.http.get(`${environment.apiUrl}keys/${data.quoteId}`, { headers: reqHeader })
+        var reqHeader = new HttpHeaders({ 'Authorization': 'Bearer ', "secret-token": data.secret});
+        return this.http.get(`${environment.apiUrl}quotations/${data.quoteId}`, { headers: reqHeader })
     }
 
     deleteQuote(data){
-        var reqHeader = new HttpHeaders({ 'Authorization': 'Bearer ', "secret-token": data.token});
-        return this.http.get(`${environment.apiUrl}keys/${data.quoteId}`, { headers: reqHeader })
+        var reqHeader = new HttpHeaders({ 'Authorization': 'Bearer ', "secret-token": data.secret});
+        return this.http.delete(`${environment.apiUrl}quotations/${data.quoteId}`, { headers: reqHeader })
     }
 }

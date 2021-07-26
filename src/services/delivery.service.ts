@@ -18,12 +18,12 @@ export class DeliveryService {
     }
 
     getDelivery(data){
-        var reqHeader = new HttpHeaders({ 'Authorization': 'Bearer ', "secret-token": data.token});
-        return this.http.get(`${environment.apiUrl}keys/${data.deliveryId}`, { headers: reqHeader })
+        var reqHeader = new HttpHeaders({ 'Authorization': 'Bearer ', "secret-token": data.secret});
+        return this.http.get(`${environment.apiUrl}delivery/${data.deliveryId}`, { headers: reqHeader })
     }
 
     deleteDelivery(data){
-        var reqHeader = new HttpHeaders({ 'Authorization': 'Bearer ', "secret-token": data.token});
-        return this.http.get(`${environment.apiUrl}keys/${data.quoteId}`, { headers: reqHeader })
+        var reqHeader = new HttpHeaders({ 'Authorization': 'Bearer ', "secret-token": data.secret});
+        return this.http.delete(`${environment.apiUrl}delivery/${data.quoteId}`, { headers: reqHeader })
     }
 }

@@ -23,7 +23,7 @@ export class DelConsoleComponent implements OnInit {
     parameterValue: string;
     contentType: string = "application/json";
     quoteId: string;
-    token: string = localStorage.getItem('secret-token');
+    secret: string = localStorage.getItem('secret-token');
     bodyRequest: Object;
     values: string;
     bodyResponse: any;
@@ -33,7 +33,7 @@ export class DelConsoleComponent implements OnInit {
     }
 
     getToken(event: any) {
-        this.token = event.target.value;
+        this.secret = event.target.value;
     }
 
     addHeader() {
@@ -59,11 +59,11 @@ export class DelConsoleComponent implements OnInit {
                 selector.empty()
         let data = {
             quoteId: this.quoteId,
-            token: this.token
+            secret: this.secret
         }
         this.quoteService.deleteQuote(data).subscribe(res => {
             this.bodyResponse = res;
-            $(".panel:last").append(format.html.getDelivery(this.bodyResponse));
+            $(".panel:last").append(format.html.delQuote(this.bodyResponse));
         }, err => {
             $(".panel:last").append(format.html.Error(err));
         })

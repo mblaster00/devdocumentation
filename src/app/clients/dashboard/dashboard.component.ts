@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { data } from 'jquery';
 import { UsersService } from 'src/services/users.service';
 
@@ -7,7 +7,7 @@ import { UsersService } from 'src/services/users.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, AfterViewInit {
   appointments;
   userId: string;
   token: string;
@@ -16,7 +16,8 @@ export class DashboardComponent implements OnInit {
   secret: string = " ";
 
   constructor(
-    private userService: UsersService
+    private userService: UsersService,
+    private elementRef: ElementRef, private renderer: Renderer2,
   ) {
     this.token = localStorage.getItem('x-access-token');
     this.userId = localStorage.getItem('current_user');
@@ -45,4 +46,16 @@ export class DashboardComponent implements OnInit {
       console.log(err)
     })
   }
+
+  ngAfterViewInit() { 
+    this.renderer.listen(this.elementRef.nativeElement, 'click', () => { this.copy() });
+  }
+
+  copy() {
+    this.elementRef.nativeElement = $(`#copyToClipboard-a`);
+    var text = $('#textA');
+    text.select();
+    document.execCommand('copy');
+  }
+  
 }

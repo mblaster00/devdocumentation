@@ -17,4 +17,14 @@ export class QuotationsService {
         var reqHeader = new HttpHeaders({ 'Authorization': 'Bearer', "secret-token": data.secret});
         return this.http.post(environment.apiUrl + 'quotations/requestQuote', data.body, { headers: reqHeader })
     }
+
+    getQuote(data){
+        var reqHeader = new HttpHeaders({ 'Authorization': 'Bearer ', "secret-token": data.token});
+        return this.http.get(`${environment.apiUrl}keys/${data.quoteId}`, { headers: reqHeader })
+    }
+
+    deleteQuote(data){
+        var reqHeader = new HttpHeaders({ 'Authorization': 'Bearer ', "secret-token": data.token});
+        return this.http.get(`${environment.apiUrl}keys/${data.quoteId}`, { headers: reqHeader })
+    }
 }

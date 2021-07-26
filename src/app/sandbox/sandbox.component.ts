@@ -30,8 +30,12 @@ export class SandboxComponent implements OnInit {
           event.url === "/sandbox/users/login/console" ||
           event.url === "/sandbox/users/apiKey" ||
           event.url === "/sandbox/users/apiKey/console" ||
+
           event.url === "/sandbox/quotations/requestQuote" ||
           event.url === "/sandbox/quotations/requestQuote/console" ||
+          event.url === "/sandbox/quotations/getQuote" ||
+          event.url === "/sandbox/quotations/getQuote/console" ||
+
           event.url === "/sandbox/delivery/requestDelivery" ||
           event.url === "/sandbox/delivery/requestDelivery/console" ||
           event.url === "/sandbox/delivery/getDelivery" ||
@@ -39,7 +43,7 @@ export class SandboxComponent implements OnInit {
         ) {
           this.patientSidebar = true;
         } else {
-          this.patientSidebar = false;
+          this.patientSidebar = true;
         }
       }
     });
@@ -52,9 +56,13 @@ export class SandboxComponent implements OnInit {
       this.url === "/sandbox/users/login/console" ||
       this.url === "/sandbox/users/apiKey" ||
       this.url === "/sandbox/users/apiKey/console" ||
+
       this.url === "/sandbox/quotations" ||
       this.url === "/sandbox/quotations/requestQuote" ||
       this.url === "/sandbox/quotations/requestQuote/console" ||
+      this.url === "/sandbox/quotations/getQuote" ||
+      this.url === "/sandbox/quotations/getQuote/console" ||
+
       this.url === "/sandbox/delivery/requestDelivery" ||
       this.url === "/sandbox/delivery/requestDelivery/console" ||
       this.url === "/sandbox/delivery/getDelivery" ||
@@ -62,7 +70,7 @@ export class SandboxComponent implements OnInit {
     ) {
       this.patientSidebar = true;
     } else {
-      this.patientSidebar = false;
+      this.patientSidebar = true;
     }
   }
 

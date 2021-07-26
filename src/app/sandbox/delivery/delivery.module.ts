@@ -7,6 +7,10 @@ import { CommonModule } from '@angular/common';
 import { DeliveryRoutingModule } from './delivery-routing.module';
 import { DeliveryComponent } from './delivery.component';
 import { ConsoleComponent } from './getDelivery/console/console.component';
+import { PutDeliveryComponent } from './putDelivery/putDelivery.component';
+import { PutConsoleComponent } from './putDelivery/putConsole/putConsole.component';
+import { DelDeliveryComponent } from './delDelivery/delDelivery.component';
+import { DelConsoleComponent } from './delDelivery/delConsole/delConsole.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +18,11 @@ import { ConsoleComponent } from './getDelivery/console/console.component';
     RequestDeliveryComponent, 
     RequestConsoleComponent,
     GetDeliveryComponent,
-    ConsoleComponent
+    ConsoleComponent,
+    PutDeliveryComponent,
+    PutConsoleComponent,
+    DelDeliveryComponent,
+    DelConsoleComponent
   ],
   imports: [
     CommonModule,

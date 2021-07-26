@@ -1,1 +1,68 @@
-<div class="delConsole"> Hello DelConsoleComponent! </div>
+<div class="card"><br><br>
+    <div class="card-header">
+        <h2>Delivery - Console</h2>
+    </div>
+    <div class="card-body pt-0"><br>
+        <div>This operation is used to delete delivery information from Logidoo Ecommerce API.</div>
+        <div class="panel"><br>
+            <form name="form" #reset="ngForm" (ngSubmit)="Submit()" class="needs-validation">
+                <h4><b> Query parameters</b></h4>
+                <div id="buildyourform">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group has-error">
+                                <input type="text" class="form-control" value="deliveryId" placeholder="deliveryId"
+                                    readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group has-feedback">
+                                <input type="text" [(ngModel)]="deliveryId" name="deliveryId" class="form-control"
+                                    (keyup)="delDelivery($event)" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button (click)="addParameter()" id="addParameter" class="btn btn-link" type="button">
+                        <i class="fas fa-plus" aria-hidden="true"></i> Add parameter
+                    </button><br><br>
+                </div>
+                <h4><b> Headers</b></h4>
+                <div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group has-error">
+                                <input type="text" class="form-control" value="secret-token" placeholder="secret-token"
+                                    readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group has-feedback">
+                                <input type="text" [(ngModel)]="token" name="token" class="form-control"
+                                    (keyup)="getToken($event)" required>
+                            </div>
+                        </div>
+                    </div>
+                </div><br>
+                <div>
+                    <h4><b> HTTP request</b></h4>
+                    <div id="httpRequest" class="tabcontent">
+                        <pre>
+                        <code data-bind="text: requestSummary" title="Double click to select all.">
+POST https://localhost:9000/api/keys/:deliveryId HTTP/1.1
+Host: localhost:9000
+deliveryId: {{ deliveryId }}
+secret-token: {{ token }}
+<span *ngIf="parameterValue != null" id="parameter"></span>
+{{ bodyRequest }}
+                        </code></pre>
+                    </div>
+                </div><br>
+                <div class="actions mt-3">
+                    <button type="submit" class="btn btn-warning">Send</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

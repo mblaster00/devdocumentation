@@ -12,33 +12,6 @@ export class HomeComponent implements OnInit {
 
   constructor(public commonService:CommonServiceService) { }
 
-  ngOnInit(): void {
-    this.getPatients();
-    this.getAppointments();
-  }
-
-  getAppointments() {
-    this.commonService.getAppointments()
-      .subscribe(res=>{
-        this.appointments = res;
-        let scope = this;
-        this.appointments.forEach(index=>{
-          let filter = scope.patients.filter(a=>a.key === index.patient_key);
-          if(filter.length != 0) {
-            index['patients'] = filter[0];
-          }
-        })
-       
-      })
-  }
-
-  getPatients() {
-    this.commonService.getpatients()
-    .subscribe(res=>{
-      this.patients = res;
-    })
-  }
-
-
- 
+  ngOnInit(): void { }
+  
 }

@@ -34,7 +34,8 @@ export class SandboxComponent implements OnInit {
           event.url === "/sandbox/quotations/requestQuote/console" ||
           event.url === "/sandbox/delivery/requestDelivery" ||
           event.url === "/sandbox/delivery/requestDelivery/console" ||
-          event.url === "/sandbox/component"
+          event.url === "/sandbox/delivery/getDelivery" ||
+          event.url === "/sandbox/delivery/getDelivery/console"
         ) {
           this.patientSidebar = true;
         } else {
@@ -56,7 +57,8 @@ export class SandboxComponent implements OnInit {
       this.url === "/sandbox/quotations/requestQuote/console" ||
       this.url === "/sandbox/delivery/requestDelivery" ||
       this.url === "/sandbox/delivery/requestDelivery/console" ||
-      this.url === "/sandbox/component"
+      this.url === "/sandbox/delivery/getDelivery" ||
+      this.url === "/sandbox/delivery/getDelivery/console"
     ) {
       this.patientSidebar = true;
     } else {

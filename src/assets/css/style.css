@@ -1627,6 +1627,15 @@ button.bg-danger:hover {
 	font-size: 12px;
 	z-index: 1;
 }
+
+.form-focus .form-control ~ .check {
+	opacity: 1;
+	font-weight: 400;
+	top: -18px;
+	font-size: 12px;
+	z-index: 1;
+}
+
 .form-focus .form-control {
 	height: 50px;
 	padding: 21px 12px 6px;
@@ -1863,7 +1872,7 @@ button.bg-danger:hover {
     text-transform: uppercase;
     font-weight: 700;
 }
-.header .has-arrow .dropdown-toggle:after {
+.header .has-arrow .dropdown-toggle[aria-expanded="false"]:after {
 	border-top: 0;
 	border-left: 0;
 	border-bottom: 2px solid #757575;
@@ -1885,9 +1894,25 @@ button.bg-danger:hover {
 	margin-left: 10px;
 }
 .header .has-arrow .dropdown-toggle[aria-expanded="true"]:after {
-	-webkit-transform: rotate(-135deg);
-	-ms-transform: rotate(-135deg);
-	transform: rotate(-135deg);
+	border-top: 0;
+	border-left: 0;
+	border-bottom: 2px solid #757575;
+	border-right: 2px solid #757575;
+	content: '';
+	height: 8px;
+	display: inline-block;
+	pointer-events: none;
+	-webkit-transform-origin: 66% 66%;
+	-ms-transform-origin: 66% 66%;
+	transform-origin: 66% 66%;
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(225deg);
+	-webkit-transition: all 0.15s ease-in-out;
+	transition: all 0.15s ease-in-out;
+	width: 8px;
+	vertical-align: 2px;
+	margin-left: 10px;
 }
 .user-menu {
     float: right;

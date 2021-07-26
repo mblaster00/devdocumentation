@@ -49,6 +49,21 @@
 								<span class="badge badge-warning">POST </span> /quotations/requestQuote - POST
 							</a>
 						</li>
+						<li [class.active]="name === 'getQuotation'">
+							<a [routerLink]="'quotations/getQuote'" (click)="navigate('getQuotation')">
+								<span class="badge badge-success">GET </span> /quotation - GET
+							</a>
+						</li>
+						<li [class.active]="name === 'putQuotation'">
+							<a [routerLink]="'quotations/putQuote'" (click)="navigate('putQuotation')">
+								<span class="badge badge-put">PUT </span> /quotation - PUT
+							</a>
+						</li>
+						<li [class.active]="name === 'deleteQuotation'">
+							<a [routerLink]="'quotations/deleteQuote'" (click)="navigate('deleteQuotation')">
+								<span class="badge badge-danger">DELETE </span> /quotation - DELETE
+							</a>
+						</li>
 					</ul>
 				</li>
 				<li>
@@ -62,14 +77,19 @@
 								<span class="badge badge-warning">POST </span> /delivery/requestDelivery - POST
 							</a>
 						</li>
+						<li [class.active]="name === 'getDelivery'">
+							<a [routerLink]="'delivery/getDelivery'" (click)="navigate('getDelivery')">
+								<span class="badge badge-success">GET </span> /delivery - GET
+							</a>
+						</li>
 						<li [class.active]="name === 'putDelivery'">
-							<a [routerLink]="'users/apiKey'" (click)="navigate('putDdelivery')">
+							<a [routerLink]="'delivery/putDelivery'" (click)="navigate('putDelivery')">
 								<span class="badge badge-put">PUT </span> /delivery - PUT
 							</a>
 						</li>
-						<li [class.active]="name === 'getDelivery'">
-							<a [routerLink]="'users/login'" (click)="navigate('getDelivery')">
-								<span class="badge badge-success">GET </span> /delivery - GET
+						<li [class.active]="name === 'deleteDelivery'">
+							<a [routerLink]="'delivery/deleteDelivery'" (click)="navigate('deleteDelivery')">
+								<span class="badge badge-danger">DELETE </span> /delivery - DELETE
 							</a>
 						</li>
 					</ul>

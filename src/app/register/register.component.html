@@ -1,52 +1,83 @@
-	<div class="content">
-				<div class="container-fluid">
-					
-					<div class="row">
-						<div class="col-md-8 offset-md-2">
-								
-							<!-- Register Content -->
-							<div class="account-content">
-								<div class="row align-items-center justify-content-center">
-									<div class="col-md-7 col-lg-6 login-left">
-										<img src="assets/img/login-banner.png" class="img-fluid" alt="Doccure Register">	
-									</div>
-									<div class="col-md-12 col-lg-6 login-right">
-										<div class="login-header">
-											<!-- <h3>{{reg_type}} <a href="javascript:void(0)" (click) = "changeRegType()">{{doc_patient}}</a></h3> -->
-											<h3>Register<a href="javascript:void(0)" (click) = "changeRegType()">Ecommerce API</a></h3>
+<div class="content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-8 offset-md-2">
+				<!-- Register Content -->
+				<div class="account-content">
+					<div class="row align-items-center justify-content-center">
+						<!-- <div class="col-md-7 col-lg-4 login-left">
+							<img src="assets/img/login-banner.png" class="img-fluid" alt="Doccure Register">
+						</div> -->
+						<div class="col-md-12 col-lg-10 login-right">
+							<div class="login-header">
+								<h3>Register<a href="javascript:void(0)">Ecommerce API</a></h3>
+							</div>
+							<div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="error">
+								<a href="javascript:void(0);" class="alert-link">{{bodyResponse.error.message}}</a>.
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="Error()">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="success">
+								<a href="javascript:void(0);" class="alert-link">Inscription successfully done</a>.
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<!-- Register Form -->
+							<form [formGroup]="myForm" (submit)="signup()">
+								<div class="row form-row">
+									<div class="col-12 col-md-6">
+										<div class="form-group form-focus">
+											<input type="text" name="username" class="form-control floating" (change)="verify($event)" formControlName="username" required>
+											<label class="focus-label">Username<span class="required">*</span></label>
 										</div>
-										
-										<!-- Register Form -->
-										<form>
-											<div class="form-group form-focus">
-												<input type="text" name="name"  class="form-control floating" [(ngModel)]="name">
-												<label class="focus-label">Name<span class="required">*</span></label>
-											</div>
-
-											<div class="form-group form-focus">
-												<input type="text" name="mobile"  class="form-control floating" [(ngModel)]="mobile" max="9">
-												<label class="focus-label">Mobile Number<span class="required">*</span></label>
-											</div>
-
-											<div class="form-group form-focus">
-												<input type="password" name="password" class="form-control floating"  [(ngModel)]="password">
-												<label class="focus-label">Create Password<span class="required">*</span></label>
-											</div>
-											<div class="text-right">
-												<a class="forgot-link" [routerLink]="'/login-page'">Already have an account?</a>
-											</div>
-											<button class="btn btn-primary btn-block btn-lg login-btn" type="submit" (click)="signup()">Signup</button>
-										</form>
-										<!-- /Register Form -->
-										
+									</div>
+									<div class="col-12 col-md-6">
+										<div class="form-group form-focus">
+											<input type="email" name="email" class="form-control floating" (change)="verify($event)" formControlName="email" max="9" required>
+											<label class="focus-label">Email<span class="required">*</span></label>
+										</div>
+									</div>
+									<div class="col-12 col-md-6">
+										<div class="form-group form-focus">
+											<input type="tel" name="phone" class="form-control floating" (change)="verify($event)" formControlName="phone" max="9">
+											<label class="focus-label">Phone</label>
+										</div>
+									</div>
+									<div class="col-12 col-md-6">
+										<div class="form-group form-focus">
+											<input type="text" name="companyName" class="form-control floating" (change)="verify($event)" formControlName="companyName" max="9" required>
+											<label class="focus-label">CompanyName<span
+													class="required">*</span></label>
+										</div>
+									</div>
+									<div class="col-12 col-md-6">
+										<div class="form-group form-focus">
+											<input type="text" name="country" class="form-control floating" (change)="verify($event)" formControlName="country" max="9" required>
+											<label class="focus-label">Country<span class="required">*</span></label>
+										</div>
+									</div>
+									<div class="col-12 col-md-6">
+										<div class="form-group form-focus">
+											<input type="password" name="password" class="form-control floating" (change)="verify($event)" formControlName="password" required>
+											<label class="focus-label">Password<span class="required">*</span></label>
+										</div>
 									</div>
 								</div>
-							</div>
-							<!-- /Register Content -->
-								
+								<div class="text-right">
+									<a class="forgot-link" [routerLink]="'/login-page'">Already have an account?</a>
+								</div>
+								<button class="btn btn-primary btn-block btn-lg login-btn" type="submit" [disabled]="!myForm.valid">Signup</button>
+							</form>
+							<!-- /Register Form -->
 						</div>
 					</div>
-
 				</div>
+				<!-- /Register Content -->
+			</div>
+		</div>
 
-			</div>		
+	</div>
+
+</div>

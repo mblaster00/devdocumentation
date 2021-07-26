@@ -3,7 +3,7 @@
         <h2>Delivery</h2>
     </div>
     <div class="card-body pt-0"><br>
-        <p>This operation is used to get API KEY to access to Logidoo Ecommerce API.</p>
+        <p>This operation is used to finalize the quotation request.</p>
         <div class="panel">
             <h3><b>/requestDelivery - POST</b></h3><br>
             <a class="btn btn-warning" [routerLink]="'console'" id="btnOpenConsole" role="button"> Try it</a>
@@ -13,28 +13,13 @@
             <label>https://localhost:9000/delivery/requestDelivery</label>
         </div>
         <div class="panel">
-            <h4>Request headers</h4>
+            <h4><b>Request headers</b></h4>
             <ul class="list-group">
                 <li class="list-group-item">
                     <div class="row">
                         <div class="col-md-3">
-                            <label>Authorization</label>
-                        </div>
-                        <div class="col-md-1">
-                            string
-                        </div>
-                        <div class="col-md-8">
-                            <p>Basic authentication header containing API user ID and API key. Should be sent in as
-                                HS245
-                                encoded.</p>
-                        </div>
-                    </div>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <label>Content-Type</label>
-                            <span class="text-muted">(optional)</span>
+                            <label>Content-Type </label>
+                            <span class="text-muted"> (optional)</span>
                         </div>
                         <div class="col-md-1">
                             string
@@ -44,29 +29,56 @@
                         </div>
                     </div>
                 </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>secret-token</label>
+                        </div>
+                        <div class="col-md-1">
+                            string
+                        </div>
+                        <div class="col-md-8">
+                            <p>Subscription key which provides access to this API. Found in your <b>Profile</b>.</p>
+                        </div>
+                    </div>
+                </li>
             </ul>
         </div>
-
+        <div class="panel">
+            <h4><b> Path Variables</b></h4>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>quoteId</label>
+                        </div>
+                        <div class="col-md-1">
+                            string
+                        </div>
+                        <div class="col-md-8">
+                            <p>Id of the quotation.
+                            </p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
         <div class="panel">
             <h4><b> Request body</b></h4>
             <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="active">
                     <a href="#requesttab1" role="tab" data-toggle="tab">
-                        application/x-www-form-urlencoded
+                        application/json
                     </a>
                 </li>
             </ul>
-            <!-- <pre> --> <code class="nohighlight">               
-access_token 
-            </code> <!-- </pre> -->
         </div>
         <div class="panel">
             <h4><b> Responses</b></h4>
-            <label>200 OK</label>
+            <label style="color: green;">201 Created</label>
         </div>
-
         <div class="panel">
-            <h4>Representations</h4>
+            <h4><b>Representations</b></h4>
             <div role="tabpanel">
                 <ul class="nav nav-tabs" role="tablist">
                     <li role="presentation" class="active">
@@ -82,8 +94,11 @@ access_token
                 <div id="Sample" class="tabcontent">
                     <pre><code class="json"><span class="http">
 {{ '{' }}
-    "username": "string",
-    "password": "string"
+    "pickupContactEmail": "string",
+    "pickupContactPhoneNumber": "string",
+    "dropoffContactFullName": "string",
+    "dropoffContactEmail": "string",
+    "dropoffContactPhoneNumber": "string"
 {{ '}' }}
                     </span></code></pre>
                 </div>
@@ -91,8 +106,11 @@ access_token
                 <div id="Schema" class="tabcontent">
                     <pre><code class="json"><span class="http">
 {{ '{' }}
-    "username": "Geek",
-    "password": "pass123"
+    "pickupContactEmail": "deliver@gmail.com",
+    "pickupContactPhoneNumber": "+221780149453",
+    "dropoffContactFullName": "Recipient",
+    "dropoffContactEmail": "recipient@gmail.com",
+    "dropoffContactPhoneNumber": "+221783243453"
 {{ '}' }}
                     </span></code></pre>
                 </div>
@@ -100,56 +118,7 @@ access_token
         </div>
 
         <h4 class="card-title"><b> Code samples</b></h4>
-        <ul class="nav nav-tabs nav-code">
-            <li class="nav-item"><a class="nav-link active" (click)="openCity($event, 'basictab1')">Curl</a></li>
-            <li class="nav-item"><a class="nav-link" (click)="openCity($event, 'basictab2')">C#</a></li>
-            <li class="nav-item"><a class="nav-link" (click)="openCity($event, 'basictab3')">Java</a></li>
-        </ul>
         <div class="tab-content">
-
-            <div class="tabcontent tablinks" id="basictab1">
-                <pre><code class="json">
-curl --location --request POST 'http://localhost:9000/api/users/login' \
---header 'x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRiODAxZjU0ZjFkYjRkOTU3YWI3NTkiLCJleHAiOjE2MjUwMTM1MTksImlhdCI6MTYyNDk5NzkxOX0.J0TY6cFa4E6RdloziPhNTEZ3rLyJNYFpxre_fmVKpr4' \
---header 'Content-Type: application/x-www-form-urlencoded' \
---data-raw '{{ '{' }}
-    "username": "user@gmail.com",
-    "password": "pass123"
-{{ '}' }}'
-                </code></pre>
-            </div>
-
-            <div class="tabcontent tablinks" id="basictab2">
-                <pre><code class="json">
-var client = new RestClient("http://localhost:9000/api/users/login");
-client.Timeout = -1;
-var request = new RestRequest(Method.POST);
-request.AddHeader("x-access-token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRiODAxZjU0ZjFkYjRkOTU3YWI3NTkiLCJleHAiOjE2MjUwMTM1MTksImlhdCI6MTYyNDk5NzkxOX0.J0TY6cFa4E6RdloziPhNTEZ3rLyJNYFpxre_fmVKpr4");
-request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
-var body = @"{{ '{' }}" + "\n" +
-@"    ""username"": ""user@gmail.com""," + "\n" +
-@"    ""password"": ""pass123""" + "\n" +
-@"{{ '}' }}";
-request.AddParameter("application/x-www-form-urlencoded", body,  ParameterType.RequestBody);
-IRestResponse response = client.Execute(request);
-Console.WriteLine(response.Content);
-                </code></pre>
-            </div>
-
-            <div class="tabcontent tablinks" id="basictab3">
-                <pre><code class="json">
-OkHttpClient client = new OkHttpClient().newBuilder()
-.build();
-    MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
-    RequestBody body = RequestBody.create(mediaType, "{{ '{' }}\n    \"username\": \"user@gmail.com\",\n    \"password\": \"pass123\"\n{{ '}' }}");
-    Request request = new Request.Builder()
-.url("http://localhost:9000/api/users/login")
-.method("POST", body)
-.addHeader("x-access-token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRiODAxZjU0ZjFkYjRkOTU3YWI3NTkiLCJleHAiOjE2MjUwMTM1MTksImlhdCI6MTYyNDk5NzkxOX0.J0TY6cFa4E6RdloziPhNTEZ3rLyJNYFpxre_fmVKpr4")
-.addHeader("Content-Type", "application/x-www-form-urlencoded")
-.build();
-    Response response = client.newCall(request).execute();
-                </code></pre>
-            </div>
+            <iframe src="//api.apiembed.com/?source=https://logidoo.s3.us-east-2.amazonaws.com/delivery.json&targets=shell:curl,node:unirest,java:unirest,python:requests,php:curl,ruby:native,objc:nsurlsession,go:native,javascript:jquery,node:native,node:request,python:python3" frameborder="0" scrolling="no" width="100%" height="500px" seamless></iframe>
         </div>
     </div>

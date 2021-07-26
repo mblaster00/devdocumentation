@@ -30,7 +30,7 @@ export const html = {
                 <div id="httpRequest" style="min-width: 75%;box-sizing: border-box;padding: 6px 12px;border: 1px solid #ccc;">
                 <pre data-bind="selectAll: { on: 'dblclick' }" title="Double click to select all.">
                 <code data-bind="text: requestSummary" title="Double click to select all.">
-Date: ${new Date()}
+Date: ${bodyResponse.data.updated_at}
 Content-Type: application/json
 {
 "data": {
@@ -49,15 +49,84 @@ Content-Type: application/json
         return $(`
         <div id="httpResponse"><br>
                 <h4><b> Response status</b></h4>
+                <p style="color: green;">200 OK</p>
+                <h4><b> Response content</b></h4>
+                <div id="httpRequest" style="min-width: 75%;box-sizing: border-box;padding: 6px 12px;border: 1px solid #ccc;">
+                <pre data-bind="selectAll: { on: 'dblclick' }" title="Double click to select all.">
+                <code data-bind="text: requestSummary" title="Double click to select all.">
+Date: ${bodyResponse.data.updated_at}
+"data": {
+    "key": ${bodyResponse.data.secretToken}
+}
+                </code>
+            </pre>
+                </div>
+            </div>
+        `);
+    },
+
+    getDelivery: function myFunction(bodyResponse) {
+        return $(`
+        <div id="httpResponse"><br>
+                <h4><b> Response status</b></h4>
                 <p style="color: green;">201 Created</p>
                 <h4><b> Response content</b></h4>
                 <div id="httpRequest" style="min-width: 75%;box-sizing: border-box;padding: 6px 12px;border: 1px solid #ccc;">
                 <pre data-bind="selectAll: { on: 'dblclick' }" title="Double click to select all.">
                 <code data-bind="text: requestSummary" title="Double click to select all.">
-Date: ${new Date()}
-{
+Date: ${bodyResponse.body.created_at}
 "data": {
-    "key": ${bodyResponse.key}
+    "quoteId": ${bodyResponse.data.quoteId},
+    "totalItemsWeight": ${bodyResponse.data.totalItemsWeight},
+    "totalItemsPrice": ${bodyResponse.data.totalItemsPrice},
+    "totalshipmentPrice": ${bodyResponse.data.totalshipmentPrice},
+    "shipmentCurrencyCode": ${bodyResponse.data.shipmentCurrencyCode}
+}
+                </code>
+            </pre>
+                </div>
+            </div>
+        `);
+    },
+
+    quotation: function myFunction(bodyResponse) {
+        return $(`
+        <div id="httpResponse"><br>
+                <h4><b> Response status</b></h4>
+                <p style="color: green;">201 Created</p>
+                <h4><b> Response content</b></h4>
+                <div id="httpRequest" style="min-width: 75%;box-sizing: border-box;padding: 6px 12px;border: 1px solid #ccc;">
+                <pre data-bind="selectAll: { on: 'dblclick' }" title="Double click to select all.">
+                <code data-bind="text: requestSummary" title="Double click to select all.">
+Date: ${bodyResponse.body.created_at}
+"data": {
+    "quoteId": ${bodyResponse.data.quoteId},
+    "totalItemsWeight": ${bodyResponse.data.totalItemsWeight},
+    "totalItemsPrice": ${bodyResponse.data.totalItemsPrice},
+    "totalshipmentPrice": ${bodyResponse.data.totalshipmentPrice},
+    "shipmentCurrencyCode": ${bodyResponse.data.shipmentCurrencyCode}
+}
+                </code>
+            </pre>
+                </div>
+            </div>
+        `);
+    },
+
+    delivery: function myFunction(bodyResponse) {
+        return $(`
+        <div id="httpResponse"><br>
+                <h4><b> Response status</b></h4>
+                <p style="color: green;">201 Created</p>
+                <h4><b> Response content</b></h4>
+                <div id="httpRequest" style="min-width: 75%;box-sizing: border-box;padding: 6px 12px;border: 1px solid #ccc;">
+                <pre data-bind="selectAll: { on: 'dblclick' }" title="Double click to select all.">
+                <code data-bind="text: requestSummary" title="Double click to select all.">
+"data": {
+    "shippingNumber": ${bodyResponse.data.shippingNumber},
+    "status": ${bodyResponse.data.status},
+    "createdAt": ${bodyResponse.data.createdAt},
+    "trackingNumber": ${bodyResponse.data.trackingNumber}
 }
                 </code>
             </pre>

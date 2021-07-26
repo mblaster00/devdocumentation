@@ -18,7 +18,21 @@
                         <div class="col-md-3">
                             <div class="form-group has-feedback">
                                 <input type="text" [(ngModel)]="contentType" name="contentType" class="form-control"
-                                    (keyup)="onKey($event)" value="application/json">
+                                    value="application/json">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group has-error">
+                                <input type="text" class="form-control" value="quoteId" placeholder="quoteId"
+                                    readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group has-feedback">
+                                <input type="text" [(ngModel)]="quoteId" name="quoteId" class="form-control"
+                                    (keyup)="getquoteId($event)" required>
                             </div>
                         </div>
                     </div>
@@ -28,20 +42,23 @@
                         <i class="fas fa-plus" aria-hidden="true"></i> Add parameter
                     </button><br><br>
                 </div>
-                <!-- <div>
-                    <h4><b> Headers</b></h4>
+                <h4><b> Headers</b></h4>
+                <div>
                     <div class="row">
                         <div class="col-md-3">
-                            <b>secret-key</b>
+                            <div class="form-group has-error">
+                                <input type="text" class="form-control" value="secret-token" placeholder="secret-token"
+                                    readonly>
+                            </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group has-feedback">
-                                <input type="textbox" [(ngModel)]="authorization" name="authorization" 
-                                class="form-control" (keyup)="onKey($event)" placeholder="value">
+                                <input type="text" [(ngModel)]="token" name="token" class="form-control"
+                                    (keyup)="getToken($event)" required>
                             </div>
                         </div>
                     </div>
-                </div><br> -->
+                </div><br>
                 <div>
                     <h4><b> Request body</b></h4>
                     <div class="app-ace-editor tabcontent" #editor></div>
@@ -54,6 +71,8 @@
 POST https://localhost:9000/api/users/login HTTP/1.1
 Host: localhost:9000
 Content-Type: {{ contentType }}
+quoteId: {{ quoteId }}
+secret-token: {{ token }}
 <span *ngIf="parameterValue != null" id="parameter"></span>
 {{ bodyRequest }}
                         </code></pre>

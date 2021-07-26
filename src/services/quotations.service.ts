@@ -14,6 +14,7 @@ export class QuotationsService {
     constructor(private http: HttpClient) { }
 
     requestQuote(data) {
-        return this.http.post(environment.apiUrl + 'quotations/requestQuote', data)
+        var reqHeader = new HttpHeaders({ 'Authorization': 'Bearer', "secret-token": data.secret});
+        return this.http.post(environment.apiUrl + 'quotations/requestQuote', data.body, { headers: reqHeader })
     }
 }

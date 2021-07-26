@@ -9,6 +9,7 @@ import { Event, NavigationStart, Router, NavigationEnd } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
 import { Location } from '@angular/common';
 import { CommonServiceService } from './../../common-service.service';
+declare var $: any;
 
 @Component({
   selector: 'app-header',
@@ -16,8 +17,8 @@ import { CommonServiceService } from './../../common-service.service';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit, AfterViewInit {
+  storage = localStorage.getItem('auth');
   auth: boolean = false;
-  isPatient: boolean = false;
   splitVal;
   url;
   base;
@@ -28,22 +29,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     public router: Router,
     location: Location,
     public commonService: CommonServiceService
-  ) {
-    this.commonService.message.subscribe((res) => {
-      if (res === 'patientLogin') {
-        this.auth = true;
-        // this.isPatient = true;
-      }
-      if (res === 'doctorLogin') {
-        this.auth = true;
-        // this.isPatient = false;
-      }
-      if (res === 'logout') {
-        this.auth = false;
-        this.isPatient = false;
-      }
-    });
-  }
+  ) { }
 
   ngOnInit(): void {
 
@@ -54,24 +40,13 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     }
     if (localStorage.getItem('auth') === 'true') {
       this.auth = true;
-      this.isPatient =
-        localStorage.getItem('patient') === 'true' ? true : false;
     }
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationStart) {
         this.splitVal = event.url.split('/');
         this.base = this.splitVal[1];
         this.page = this.splitVal[2];
-        if (
-          (this.base === 'patients' && this.page === 'dashboard') ||
-          this.base === '' ||
-          this.base === 'Register' ||
-          this.base === 'login-page' ||
-          this.base === 'home' ||
-          this.base === 'sandbox' ||
-          this.base === 'documentation' ||
-          this.base === 'faqs'
-        ) {
+        if (this.storage == 'false' || this.storage == null) {
           this.auth = false;
         } else {
           this.auth = true;
@@ -96,6 +71,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     this.cdr.detectChanges();
     this.loadDynmicallyScript("assets/js/script.js");
   }
+
   loadDynmicallyScript(js) {
     var script = document.createElement("script");
     script.src = js;
@@ -103,7 +79,9 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     document.head.appendChild(script);
     script.onload = () => this.doSomethingWhenScriptIsLoaded();
   }
+
   doSomethingWhenScriptIsLoaded() { }
+
   change(name) {
     this.page = name;
     this.commonService.nextmessage("main");
@@ -143,8 +121,9 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   logout() {
     localStorage.clear();
     this.auth = false;
-    this.isPatient = false;
-    this.router.navigate(['/login-page']);
+    this.router.navigateByUrl('/login-page').then(() => {
+      window.location.reload();
+    });
   }
 
   home() {
@@ -159,6 +138,19 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     if (name === 'Admin') {
       this.router.navigate(['/admin']);
       this.commonService.nextmessage('admin');
+    }
+  }
+
+  show() {
+    let query = $(".header-navbar-rht .dropdown")
+    let toggle = $(".header-navbar-rht .dropdown .dropdown-toggle")
+    if (query.attr('class').split(' ').pop() != "show") {
+      query.addClass("show");
+      toggle.attr("aria-expanded", "true");
+    }
+    else {
+      query.removeClass("show")
+      toggle.attr("aria-expanded", "false");
     }
   }
 }

@@ -19,8 +19,9 @@ export class SidemenuComponent implements OnInit {
 
   logout() {
     localStorage.clear();
-    this.commonService.nextmessage('logout');
-    this.router.navigate(['/']);
+    this.router.navigateByUrl('/login-page').then(() => {
+      window.location.reload();
+    });
   }
 
   navigate(name) {

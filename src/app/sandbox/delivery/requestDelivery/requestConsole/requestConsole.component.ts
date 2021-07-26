@@ -25,7 +25,8 @@ export class RequestConsoleComponent implements OnInit, AfterViewInit {
     parameterValue: string;
     contentType: string = "application/json";
     bodyRequest: Object;
-    values: string;
+    quoteId: string;
+    token: string = " ";
     bodyResponse: any;
 
     ngAfterViewInit(): void {
@@ -39,8 +40,12 @@ export class RequestConsoleComponent implements OnInit, AfterViewInit {
         this.renderer.listen(this.elementRef.nativeElement, 'keyup', () => { this.addHeader(); });
     }
 
-    onKey(event: any) {
-        this.values = event.target.value;
+    getToken(event: any) {
+        this.token = event.target.value;
+    }
+
+    getquoteId(event: any) {
+        this.quoteId = event.target.value;
     }
 
     addHeader() {
@@ -61,9 +66,17 @@ export class RequestConsoleComponent implements OnInit, AfterViewInit {
     }
 
     Submit() {
-        this.deliveryService.requestDelivery(this.bodyRequest).subscribe(res => {
+        let selector = $(".panel:last #httpResponse")
+            if (selector.length != 0)
+                selector.empty()
+        let data = {
+            secret: this.token,
+            quoteId: this.quoteId,
+            body: this.bodyRequest
+        }
+        this.deliveryService.requestDelivery(data).subscribe(res => {
             this.bodyResponse = res;
-            $(".panel:last").append(format.html.register(this.bodyResponse));
+            $(".panel:last").append(format.html.delivery(this.bodyResponse));
         }, err => {
             console.log(err)
         })

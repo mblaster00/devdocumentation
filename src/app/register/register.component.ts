@@ -1,84 +1,78 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-
-import { CommonServiceService } from '../common-service.service';
-
 import { ToastrService } from 'ngx-toastr';
+import { UsersService } from 'src/services/users.service';
+declare var $: any;
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
 })
-export class RegisterComponent implements OnInit {
-  name = '';
-  mobile = '';
-  password = '';
-  isPatient: boolean = true;
-  doctors: any = [];
-  patients: any = [];
-  reg_type = 'Patient Register';
-  doc_patient = 'Are you a Doctor?';
+export class RegisterComponent implements OnInit, AfterViewInit {
+  error: boolean = false;
+  success: boolean = false;
+  bodyResponse: any;
+  myForm: FormGroup;
+
   constructor(
-    private toastr: ToastrService,
-    public commonService: CommonServiceService,
+    public userService: UsersService,
+    private elementRef: ElementRef, private renderer: Renderer2,
+    private formBuilder: FormBuilder,
     public router: Router
-  ) {}
+  ) {
+    this.validation()
+   }
 
-  ngOnInit(): void {
-    this.getpatients();
-    this.getDoctors();
-  }
+  ngOnInit(): void {}
 
-  changeRegType() {
-    if (this.reg_type === 'Doctor Register') {
-      this.reg_type = 'Patient Register';
-      this.doc_patient = 'Are you a Doctor?';
-      this.isPatient = true;
-    } else {
-      this.reg_type = 'Doctor Register';
-      this.doc_patient = 'Not a Doctor?';
-      this.isPatient = false;
-    }
-  }
-
-  signup() {
-    if (this.name === '' || this.mobile === '' || this.password === '') {
-      this.toastr.error('', 'Please enter mandatory field!');
-    } else {
-      if (!this.isPatient) {
-        let params = {
-          id: this.doctors.length + 1,
-          doctor_name: this.name,
-          password: this.password,
-        };
-        this.commonService.createDoctor(params).subscribe((res) => {
-          this.toastr.success('', 'Register successfully!');
-          this.router.navigate(['/login']);
-        });
-      } else {
-        let params = {
-          id: this.patients.length + 1,
-          name: this.name,
-          password: this.password,
-        };
-        this.commonService.createPatient(params).subscribe((res) => {
-          this.toastr.success('', 'Register successfully!');
-          this.router.navigate(['/login']);
-        });
-      }
-    }
-  }
-
-  getDoctors() {
-    this.commonService.getDoctors().subscribe((res) => {
-      this.doctors = res;
+  validation() {
+    this.myForm = this.formBuilder.group({
+      username: ['', Validators.required],
+      phone: [''],
+      companyName: ['', Validators.required],
+      country: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
 
-  getpatients() {
-    this.commonService.getpatients().subscribe((res) => {
-      this.patients = res;
+  ngAfterViewInit() {
+    this.renderer.listen(this.elementRef.nativeElement, 'change', () => { this.verify(event) });
+  }
+
+  verify(event) {
+    let query = $(`input[name="${event.target.name}"]`)
+    this.elementRef.nativeElement = query.next()
+    this.elementRef.nativeElement.addClass("check");
+    if (query.val() == "") { this.elementRef.nativeElement.removeClass("check"); }
+  }
+
+  Error() {
+    var query = $(`.alert-danger`);
+    query.click(function () {
+      let attr = $(this).attr('class').split(" ").pop();
+      (attr != "error") ? query.addClass("error") : query.removeClass("error")
+    });
+    this.error = false;
+  }
+
+  signup() {
+    let params = {
+      username: this.myForm.value.username,
+      email: this.myForm.value.email,
+      phone: this.myForm.value.phone,
+      companyName: this.myForm.value.companyName,
+      country: this.myForm.value.country,
+      password: this.myForm.value.password
+    };
+    this.userService.register(params).subscribe((res) => {
+      this.success = true
+      this.router.navigate(['/login-page']);
+    }, err => {
+      this.error = true
+      this.bodyResponse = err;
     });
   }
 }

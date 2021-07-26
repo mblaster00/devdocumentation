@@ -16,6 +16,30 @@ const routes: Routes = [
 	{
 		path : 'requestQuote/console',
 		component : RequestConsoleComponent
+	},
+	{
+		path : 'getQuote',
+		component : RequestQuoteComponent
+	},
+	{
+		path : 'getQuote/console',
+		component : RequestConsoleComponent
+	},
+	{
+		path : 'putQuote',
+		component : RequestQuoteComponent
+	},
+	{
+		path : 'putQuote/console',
+		component : RequestConsoleComponent
+	},
+	{
+		path : 'deleteQuote',
+		component : RequestQuoteComponent
+	},
+	{
+		path : 'deleteQuote/console',
+		component : RequestConsoleComponent
 	}
 ];
 

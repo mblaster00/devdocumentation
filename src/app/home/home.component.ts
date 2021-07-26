@@ -48,8 +48,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     window.scrollTo(0, 0);
-    this.getspeciality();
-    this.getblogs();
   }
 
   
@@ -67,20 +65,7 @@ export class HomeComponent implements OnInit {
   prev() {
     this.slickModal1.slickPrev();
   }
-
-  getspeciality() {
-    this.commonService.getSpeciality().subscribe((res) => {
-      this.specialityList = res;
-    });
-  }
-
-
-  getblogs() {
-    this.commonService.getBlogs().subscribe((res) => {
-      this.blogs = res;
-    });
-  }
-
+  
   nextslide() {
     this.slickModal2.slickNext();
   }

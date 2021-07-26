@@ -3,7 +3,7 @@
         <h2>Quotations - Console</h2>
     </div>
     <div class="card-body pt-0"><br>
-        <div>This operation is used to get API KEY to access to Logidoo Ecommerce API.</div>
+        <div>This operation is used to request a quotation and obtain more information about the pricing.</div>
         <div class="panel"><br>
             <form name="form" #reset="ngForm" (ngSubmit)="Submit()" class="needs-validation">
                 <h4><b> Query parameters</b></h4>
@@ -18,7 +18,7 @@
                         <div class="col-md-3">
                             <div class="form-group has-feedback">
                                 <input type="text" [(ngModel)]="contentType" name="contentType" class="form-control"
-                                    (keyup)="onKey($event)" value="application/json">
+                                    value="application/json">
                             </div>
                         </div>
                     </div>
@@ -26,22 +26,25 @@
                 <div>
                     <button (click)="addParameter()" id="addParameter" class="btn btn-link" type="button">
                         <i class="fas fa-plus" aria-hidden="true"></i> Add parameter
-                    </button><br><br>
-                </div>
-                <!-- <div>
-                    <h4><b> Headers</b></h4>
+                    </button>
+                </div><br>
+                <h4><b> Headers</b></h4>
+                <div>
                     <div class="row">
                         <div class="col-md-3">
-                            <b>secret-key</b>
+                            <div class="form-group has-error">
+                                <input type="text" class="form-control" value="secret-token" placeholder="secret-token"
+                                    readonly>
+                            </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group has-feedback">
-                                <input type="textbox" [(ngModel)]="authorization" name="authorization" 
-                                class="form-control" (keyup)="onKey($event)" placeholder="value">
+                                <input type="text" [(ngModel)]="secret" name="secret" class="form-control"
+                                    (keyup)="getToken($event)" required>
                             </div>
                         </div>
                     </div>
-                </div><br> -->
+                </div><br>
                 <div>
                     <h4><b> Request body</b></h4>
                     <div class="app-ace-editor tabcontent" #editor></div>
@@ -54,6 +57,7 @@
 POST https://localhost:9000/api/users/login HTTP/1.1
 Host: localhost:9000
 Content-Type: {{ contentType }}
+secret-token: {{ secret }}
 <span *ngIf="parameterValue != null" id="parameter"></span>
 {{ bodyRequest }}
                         </code></pre>

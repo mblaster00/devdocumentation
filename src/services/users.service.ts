@@ -26,4 +26,8 @@ export class UsersService {
         var reqHeader = new HttpHeaders({ 'Authorization': 'Bearer ', "x-access-token": data.token});
         return this.http.get(`${environment.apiUrl}keys/${data.userId}`, { headers: reqHeader })
     }
+
+    getMyInfos(userId) {
+        return this.http.get(`${environment.apiUrl}users/${userId}`)
+    }
 }

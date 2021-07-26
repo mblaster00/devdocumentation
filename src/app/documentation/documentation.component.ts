@@ -23,7 +23,7 @@ export class DocumentationComponent implements OnInit {
       if (event instanceof NavigationStart) {
         if (
           event.url === "/documentation/home" ||
-          event.url === "/documentation/started"
+          event.url === "/documentation/common-error"
         ) {
           this.patientSidebar = true;
         } else {
@@ -32,14 +32,7 @@ export class DocumentationComponent implements OnInit {
       }
     });
     this.url = location.path();
-    if (
-      this.url === "/documentation/home" ||
-      this.url === "/documentation/started"
-    ) {
-      this.patientSidebar = true;
-    } else {
-      this.patientSidebar = false;
-    }
+    this.patientSidebar = true;
   }
 
   ngOnInit(): void {

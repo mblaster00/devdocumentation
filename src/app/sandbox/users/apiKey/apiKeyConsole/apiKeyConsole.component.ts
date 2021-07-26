@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import * as ace from "ace-builds";
 import * as format from "src/app/console.format";
 import { UsersService } from 'src/services/users.service';
@@ -21,8 +21,8 @@ export class ApiKeyConsoleComponent implements OnInit {
     parameterName: string;
     parameterValue: string;
     contentType: string = "application/json";
-    userId: string;
-    token: string;
+    userId: string = localStorage.getItem('current_user');
+    token: string = localStorage.getItem('x-access-token');
     bodyRequest: Object;
     values: string;
     bodyResponse: any;
@@ -58,7 +58,7 @@ export class ApiKeyConsoleComponent implements OnInit {
                 selector.empty()
         let data = {
             userId: this.userId,
-            token: this.token || " "
+            token: this.token
         }
         this.userService.getApiKey(data).subscribe(res => {
             this.bodyResponse = res;

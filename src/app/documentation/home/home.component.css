@@ -1,4 +1,58 @@
-ul li, p {
+/* ul li, p {
     font-size: 16px;
     font-weight: 500;
+} */
+
+.custom-block.danger, .custom-block.tip, .custom-block.warning {
+    padding: .1rem 1.5rem;
+    border-left-width: .5rem;
+    border-left-style: solid;
+    margin: 1rem 0;
+}
+
+.custom-block.tip {
+    background-color: #f3f5f7;
+    border-color: #42b983;
+}
+
+.custom-block .custom-block-title {
+    font-weight: 600;
+    margin-bottom: -.4rem;
+}
+
+ol, p, ul {
+    line-height: 1.7;
+}
+
+p {
+    margin: 0 0 9.5px;
+        margin-bottom: 9.5px;
+}
+
+code {
+    padding: 2px 4px;
+    font-size: 90%;
+    color: #c7254e;
+    background-color: #f9f2f4;
+    border-radius: 0;
+}
+
+code, kbd, pre, samp {
+    font-family: "Menlo","Monaco","Consolas","Courier New","monospace";
+}
+
+h1, .h1 {
+    font-size: 2.6em;
+}
+
+h1, .h1, h2, .h2, h3, .h3 {
+    margin-top: 19px;
+    margin-bottom: 9.5px;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: "MyriadProSemibold","Tahoma","Arial","sans-serif";
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
 }

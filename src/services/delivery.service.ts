@@ -13,6 +13,12 @@ export class DeliveryService {
     constructor(private http: HttpClient) { }
 
     requestDelivery(data) {
-        return this.http.post(environment.apiUrl + 'delivery/requestDelivery', data)
+        var reqHeader = new HttpHeaders({ 'Authorization': 'Bearer', "secret-token": data.secret});
+        return this.http.post(`${environment.apiUrl}delivery/requestDelivery/${data.quoteId}`, data.body, { headers: reqHeader })
+    }
+
+    getDelivery(data){
+        var reqHeader = new HttpHeaders({ 'Authorization': 'Bearer ', "secret-token": data.token});
+        return this.http.get(`${environment.apiUrl}keys/${data.deliveryId}`, { headers: reqHeader })
     }
 }

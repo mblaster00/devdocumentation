@@ -61,13 +61,6 @@
     <div class="panel">
       <h4><b>Representations</b></h4>
       <div role="tabpanel">
-        <ul class="nav nav-tabs" role="tablist">
-          <li role="presentation" class="active">
-            <a href="#response200tab1" role="tab" data-toggle="tab">
-              application/json
-            </a>
-          </li>
-        </ul>
         <div class="tab">
           <button class="tablinks" (click)="openCity($event, 'Sample')">Sample</button>
           <button class="tablinks" (click)="openCity($event, 'Schema')">Schema</button>
@@ -113,8 +106,6 @@
 
     <h4 class="card-title"><b> Code samples</b></h4>
     <div class="tab-content">
-      <iframe
-        src="//api.apiembed.com/?source=https://logidoo.s3.us-east-2.amazonaws.com/delivery.json&targets=shell:curl,node:unirest,java:unirest,python:requests,php:curl,ruby:native,objc:nsurlsession,go:native,javascript:jquery,node:native,node:request,python:python3"
-        frameborder="0" scrolling="no" width="100%" height="500px" seamless></iframe>
+      <iframe src="//api.apiembed.com/?source=https://logidoo.s3.us-east-2.amazonaws.com/quotations.json&targets=shell:curl,node:unirest,java:unirest,python:requests,php:curl,ruby:native,objc:nsurlsession,go:native,javascript:jquery,node:native,node:request,python:python3" frameborder="0" scrolling="no" width="100%" height="500px" seamless></iframe>
     </div>
   </div>

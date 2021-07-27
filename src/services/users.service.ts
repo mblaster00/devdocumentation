@@ -30,4 +30,9 @@ export class UsersService {
     getMyInfos(userId) {
         return this.http.get(`${environment.apiUrl}users/${userId}`)
     }
+
+    updatePassword(data){
+        var reqHeader = new HttpHeaders({ 'Authorization': 'Bearer ', "x-access-token": data.token});
+        return this.http.put(`${environment.apiUrl}users/${data.userId}`, data.body, { headers: reqHeader })
+    }
 }

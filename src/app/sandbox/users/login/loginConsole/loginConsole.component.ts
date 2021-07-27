@@ -64,7 +64,7 @@ export class LoginConsoleComponent implements OnInit, AfterViewInit{
                 selector.empty()
         this.userService.login(this.bodyRequest).subscribe(res => {
             this.bodyResponse = res;
-            $(".panel:last").append(format.html.register(this.bodyResponse));
+            $(".panel:last").append(format.html.response(this.bodyResponse));
         }, err => {
             $(".panel:last").append(format.html.Error(err));
         })

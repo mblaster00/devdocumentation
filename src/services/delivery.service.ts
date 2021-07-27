@@ -22,13 +22,18 @@ export class DeliveryService {
         return this.http.get(`${environment.apiUrl}delivery/${data.deliveryId}`, { headers: reqHeader })
     }
 
-    deleteDelivery(data){
-        var reqHeader = new HttpHeaders({ 'Authorization': 'Bearer ', "secret-token": data.secret});
-        return this.http.delete(`${environment.apiUrl}delivery/${data.quoteId}`, { headers: reqHeader })
-    }
-
     getAll(data){
         var reqHeader = new HttpHeaders({ 'Authorization': 'Bearer ', "x-access-token": data.token});
         return this.http.get(`${environment.apiUrl}delivery/getAll/${data.userId}`, { headers: reqHeader })
+    }
+
+    deleteDelivery(data){
+        var reqHeader = new HttpHeaders({ 'Authorization': 'Bearer ', "secret-token": data.secret});
+        return this.http.delete(`${environment.apiUrl}delivery/${data.deliveryId}`, { headers: reqHeader })
+    }
+
+    updateDelivery(params, body){
+        var reqHeader = new HttpHeaders({ 'Authorization': 'Bearer ', "secret-token": params.secret});
+        return this.http.put(`${environment.apiUrl}delivery/${params.deliveryId}`, body, { headers: reqHeader })
     }
 }

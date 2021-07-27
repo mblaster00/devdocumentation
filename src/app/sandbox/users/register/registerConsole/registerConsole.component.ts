@@ -67,7 +67,7 @@ export class RegisterConsoleComponent implements OnInit, AfterViewInit {
             $(".panel:last").empty()
             this.bodyResponse = res;
             console.log("reponse suite à l'inscription ====>", this.bodyResponse)
-            $(".panel:last").append(format.html.register(this.bodyResponse));
+            $(".panel:last").append(format.html.response(this.bodyResponse));
         }, err => {
             $(".panel:last").append(format.html.Error(err));
         })

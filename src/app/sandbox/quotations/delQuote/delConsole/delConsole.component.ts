@@ -23,7 +23,7 @@ export class DelConsoleComponent implements OnInit {
     parameterValue: string;
     contentType: string = "application/json";
     quoteId: string;
-    secret: string = localStorage.getItem('secret-token');
+    secret: string = " ";
     bodyRequest: Object;
     values: string;
     bodyResponse: any;

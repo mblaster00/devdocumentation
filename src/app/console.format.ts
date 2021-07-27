@@ -21,7 +21,7 @@ export const html = {
         `);
     },
 
-    register: function myFunction(bodyResponse) {
+    response: function myFunction(bodyResponse) {
         return $(`
         <div id="httpResponse"><br>
                 <h4><b> Response status</b></h4>

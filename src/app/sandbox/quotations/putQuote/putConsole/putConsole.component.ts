@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import * as ace from "ace-builds";
 import * as format from "src/app/console.format";
-import { UsersService } from 'src/services/users.service';
+import { QuotationsService } from 'src/services/quotations.service';
 declare var $: any;
 
 @Component({
@@ -22,7 +22,7 @@ export class PutConsoleComponent implements OnInit, AfterViewInit {
     token: string = " ";
 
     constructor(
-        private userService: UsersService,
+        private quoteService: QuotationsService,
         private elementRef: ElementRef, private renderer: Renderer2
     ) { }
 
@@ -70,11 +70,14 @@ export class PutConsoleComponent implements OnInit, AfterViewInit {
 
     Submit() {
         let selector = $(".panel:last #httpResponse")
-            if (selector.length != 0)
-                selector.empty()
-        this.userService.login(this.bodyRequest).subscribe(res => {
+        if (selector.length != 0) { selector.empty() }
+        let data = {
+            quoteId: this.quoteId,
+            secret: this.token
+        }
+        this.quoteService.updateQuote(data, this.bodyRequest).subscribe(res => {
             this.bodyResponse = res;
-            $(".panel:last").append(format.html.register(this.bodyResponse));
+            $(".panel:last").append(format.html.response(this.bodyResponse));
         }, err => {
             $(".panel:last").append(format.html.Error(err));
         })

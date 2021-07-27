@@ -27,4 +27,9 @@ export class QuotationsService {
         var reqHeader = new HttpHeaders({ 'Authorization': 'Bearer ', "secret-token": data.secret});
         return this.http.delete(`${environment.apiUrl}quotations/${data.quoteId}`, { headers: reqHeader })
     }
+
+    updateQuote(params, body){
+        var reqHeader = new HttpHeaders({ 'Authorization': 'Bearer ', "secret-token": params.secret});
+        return this.http.put(`${environment.apiUrl}quotations/${params.quoteId}`, body, { headers: reqHeader })
+    }
 }

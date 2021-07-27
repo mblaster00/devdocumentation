@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import * as ace from "ace-builds";
 import * as format from "src/app/console.format";
+import { environment } from 'src/environments/environment';
 import { DeliveryService } from 'src/services/delivery.service';
 declare var $: any;
 
@@ -20,6 +21,7 @@ export class PutConsoleComponent implements OnInit, AfterViewInit {
     deliveryId: string;
     bodyResponse: any;
     token: string = " ";
+    domain: string = environment.apiUrl
 
     constructor(
         private deliveryService: DeliveryService,

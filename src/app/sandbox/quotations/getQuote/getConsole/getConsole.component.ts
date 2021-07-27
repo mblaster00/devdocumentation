@@ -1,6 +1,7 @@
 import { QuotationsService } from './../../../../../services/quotations.service';
 import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import * as format from "src/app/console.format";
+import { environment } from 'src/environments/environment';
 declare var $: any;
 
 @Component({
@@ -26,6 +27,7 @@ export class GetConsoleComponent implements OnInit {
     bodyRequest: Object;
     values: string;
     bodyResponse: any;
+    domain: string = environment.apiUrl
 
     getQuote(event: any) {
         this.quoteId = event.target.value;

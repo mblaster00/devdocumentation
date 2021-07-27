@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
     selector: 'app-register',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+
+
+    domain: string = environment.apiUrl
 
     constructor() { }
 

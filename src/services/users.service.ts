@@ -15,24 +15,24 @@ export class UsersService {
     constructor(private http: HttpClient) { }
 
     register(data) {
-        return this.http.post(environment.apiUrl + 'users/register', data)
+        return this.http.post(environment.apiUrl + '/api/users/register', data)
     }
 
     login(data) {
-        return this.http.post(environment.apiUrl + 'users/login', data)
+        return this.http.post(environment.apiUrl + '/api/users/login', data)
     }
 
     getApiKey(data){
         var reqHeader = new HttpHeaders({ 'Authorization': 'Bearer ', "x-access-token": data.token});
-        return this.http.get(`${environment.apiUrl}keys/${data.userId}`, { headers: reqHeader })
+        return this.http.get(`${environment.apiUrl}/api/keys/${data.userId}`, { headers: reqHeader })
     }
 
     getMyInfos(userId) {
-        return this.http.get(`${environment.apiUrl}users/${userId}`)
+        return this.http.get(`${environment.apiUrl}/api/users/${userId}`)
     }
 
     updatePassword(data){
         var reqHeader = new HttpHeaders({ 'Authorization': 'Bearer ', "x-access-token": data.token});
-        return this.http.put(`${environment.apiUrl}users/${data.userId}`, data.body, { headers: reqHeader })
+        return this.http.put(`${environment.apiUrl}/api/users/${data.userId}`, data.body, { headers: reqHeader })
     }
 }

@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } fr
 import { QuotationsService, } from 'src/services/quotations.service';
 import * as ace from "ace-builds";
 import * as format from "src/app/console.format";
+import { environment } from 'src/environments/environment';
 declare var $: any;
 
 @Component({
@@ -25,6 +26,7 @@ export class RequestConsoleComponent implements OnInit, AfterViewInit {
     bodyRequest: Object;
     secret: string = " ";
     bodyResponse: any;
+    domain: string = environment.apiUrl
 
     ngAfterViewInit(): void {
         ace.config.set('basePath', 'https://unpkg.com/ace-builds@1.4.12/src-noconflict');

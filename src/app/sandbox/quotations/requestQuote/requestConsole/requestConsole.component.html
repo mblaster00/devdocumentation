@@ -54,8 +54,8 @@
                     <div id="httpRequest" class="tabcontent">
                         <pre>
                         <code data-bind="text: requestSummary" title="Double click to select all.">
-POST https://localhost:9000/api/users/login HTTP/1.1
-Host: localhost:9000
+POST {{domain}}/api/quotations/requestQuote HTTP/1.1
+Host: {{domain}}
 Content-Type: {{ contentType }}
 secret-token: {{ secret }}
 <span *ngIf="parameterValue != null" id="parameter"></span>

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-
+import { environment } from 'src/environments/environment';
 
 @Component({
     selector: 'app-requestQuote',
@@ -8,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./requestQuote.component.css']
 })
 export class RequestQuoteComponent implements OnInit{
+
+    domain: string = environment.apiUrl
 
     constructor() { }
 

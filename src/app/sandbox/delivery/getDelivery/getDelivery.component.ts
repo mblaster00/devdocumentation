@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
     selector: 'app-getDelivery',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./getDelivery.component.css']
 })
 export class GetDeliveryComponent implements OnInit {
+
+    domain: string = environment.apiUrl
 
     constructor() { }
 

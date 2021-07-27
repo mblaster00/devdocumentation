@@ -14,26 +14,26 @@ export class DeliveryService {
 
     requestDelivery(data) {
         var reqHeader = new HttpHeaders({ 'Authorization': 'Bearer', "secret-token": data.secret});
-        return this.http.post(`${environment.apiUrl}delivery/requestDelivery/${data.quoteId}`, data.body, { headers: reqHeader })
+        return this.http.post(`${environment.apiUrl}/api/delivery/requestDelivery/${data.quoteId}`, data.body, { headers: reqHeader })
     }
 
     getDelivery(data){
         var reqHeader = new HttpHeaders({ 'Authorization': 'Bearer ', "secret-token": data.secret});
-        return this.http.get(`${environment.apiUrl}delivery/${data.deliveryId}`, { headers: reqHeader })
+        return this.http.get(`${environment.apiUrl}/api/delivery/${data.deliveryId}`, { headers: reqHeader })
     }
 
     getAll(data){
         var reqHeader = new HttpHeaders({ 'Authorization': 'Bearer ', "x-access-token": data.token});
-        return this.http.get(`${environment.apiUrl}delivery/getAll/${data.userId}`, { headers: reqHeader })
+        return this.http.get(`${environment.apiUrl}/api/delivery/getAll/${data.userId}`, { headers: reqHeader })
     }
 
     deleteDelivery(data){
         var reqHeader = new HttpHeaders({ 'Authorization': 'Bearer ', "secret-token": data.secret});
-        return this.http.delete(`${environment.apiUrl}delivery/${data.deliveryId}`, { headers: reqHeader })
+        return this.http.delete(`${environment.apiUrl}/api/delivery/${data.deliveryId}`, { headers: reqHeader })
     }
 
     updateDelivery(params, body){
         var reqHeader = new HttpHeaders({ 'Authorization': 'Bearer ', "secret-token": params.secret});
-        return this.http.put(`${environment.apiUrl}delivery/${params.deliveryId}`, body, { headers: reqHeader })
+        return this.http.put(`${environment.apiUrl}/api/delivery/${params.deliveryId}`, body, { headers: reqHeader })
     }
 }

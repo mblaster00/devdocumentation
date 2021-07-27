@@ -10,7 +10,7 @@
         </div>
         <div class="panel">
             <h4><b> Request URL</b></h4>
-            <label>http://localhost:9000/users/login</label>
+            <label>{{domain}}/api/users/login</label>
         </div>
         <div class="panel">
             <h4><b>Request headers</b></h4>
@@ -91,7 +91,7 @@
 
             <div class="tabcontent tablinks" id="basictab1">
                 <pre><code class="json">
-curl --location --request POST 'http://localhost:9000/api/users/login' \
+curl --location --request POST '{{domain}}/api/users/login' \
 --header 'Content-Type: application/json' \
 --data-raw '{{ '{' }}
     "username": "user@gmail.com",
@@ -102,7 +102,7 @@ curl --location --request POST 'http://localhost:9000/api/users/login' \
 
             <div class="tabcontent tablinks" id="basictab2">
                 <pre><code class="json">
-var client = new RestClient("http://localhost:9000/api/users/login");
+var client = new RestClient("{{domain}}/api/users/login");
 client.Timeout = -1;
 var request = new RestRequest(Method.POST);
 request.AddHeader("Content-Type", "application/json");
@@ -121,7 +121,7 @@ Console.WriteLine(response.Content);
 var headers = {{ '{' }}
     'Content-Type': 'application/json'
   {{ '}' }};
-  var request = http.Request('POST', Uri.parse('http://localhost:9000/api/users/login'));
+  var request = http.Request('POST', Uri.parse('{{domain}}/api/users/login'));
   request.body = json.encode({{ '{' }}
     "username": "user@gmail.com",
     "password": "pass123"
@@ -152,7 +152,7 @@ import (
 
 func main() {{ '{' }}
 
-  url := "http://localhost:9000/api/users/login"
+  url := "{{domain}}/api/users/login"
   method := "POST"
 
   payload := strings.NewReader(`{{ '{' }}
@@ -194,7 +194,7 @@ func main() {{ '{' }}
 MediaType mediaType = MediaType.parse("application/json");
 RequestBody body = RequestBody.create(mediaType, "{{ '{' }}\n    \"username\": \"user@gmail.com\",\n    \"password\": \"pass123\"\n{{ '}' }}");
 Request request = new Request.Builder()
-  .url("http://localhost:9000/api/users/login")
+  .url("{{domain}}/api/users/login")
   .method("POST", body)
   .addHeader("Content-Type", "application/json")
   .build();
@@ -219,7 +219,7 @@ var requestOptions = {{ '{' }}
   redirect: 'follow'
 {{ '}' }};
 
-fetch("http://localhost:9000/api/users/login", requestOptions)
+fetch("{{domain}}/api/users/login", requestOptions)
   .then(response => response.text())
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
@@ -232,7 +232,7 @@ fetch("http://localhost:9000/api/users/login", requestOptions)
 
 dispatch_semaphore_t sema = dispatch_semaphore_create(0);
 
-NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://localhost:9000/api/users/login"]
+NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"{{domain}}/api/users/login"]
   cachePolicy:NSURLRequestUseProtocolCachePolicy
   timeoutInterval:10.0];
 NSDictionary *headers = @{{ '{' }}
@@ -269,7 +269,7 @@ dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
 <?php
 require_once 'HTTP/Request2.php';
 $request = new HTTP_Request2();
-$request->setUrl('http://localhost:9000/api/users/login');
+$request->setUrl('{{domain}}/api/users/login');
 $request->setMethod(HTTP_Request2::METHOD_POST);
 $request->setConfig(array(
   'follow_redirects' => TRUE
@@ -299,7 +299,7 @@ catch(HTTP_Request2_Exception $e) {{ '{' }}
 import requests
 import json
 
-url = "http://localhost:9000/api/users/login"
+url = "{{domain}}/api/users/login"
 
 payload = json.dumps({{ '{' }}
   "username": "user@gmail.com",
@@ -321,7 +321,7 @@ require "uri"
 require "json"
 require "net/http"
 
-url = URI("http://localhost:9000/api/users/login")
+url = URI("{{domain}}/api/users/login")
 
 http = Net::HTTP.new(url.host, url.port);
 request = Net::HTTP::Post.new(url)

@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } fr
 import * as ace from "ace-builds";
 import * as format from "src/app/console.format";
 import { QuotationsService } from 'src/services/quotations.service';
+import { environment } from 'src/environments/environment';
 declare var $: any;
 
 @Component({
@@ -20,6 +21,7 @@ export class PutConsoleComponent implements OnInit, AfterViewInit {
     quoteId: string;
     bodyResponse: any;
     token: string = " ";
+    domain: string = environment.apiUrl
 
     constructor(
         private quoteService: QuotationsService,

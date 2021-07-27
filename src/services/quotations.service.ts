@@ -15,21 +15,21 @@ export class QuotationsService {
 
     requestQuote(data) {
         var reqHeader = new HttpHeaders({ 'Authorization': 'Bearer', "secret-token": data.secret});
-        return this.http.post(environment.apiUrl + 'quotations/requestQuote', data.body, { headers: reqHeader })
+        return this.http.post(environment.apiUrl + '/api/quotations/requestQuote', data.body, { headers: reqHeader })
     }
 
     getQuote(data){
         var reqHeader = new HttpHeaders({ 'Authorization': 'Bearer ', "secret-token": data.secret});
-        return this.http.get(`${environment.apiUrl}quotations/${data.quoteId}`, { headers: reqHeader })
+        return this.http.get(`${environment.apiUrl}/api/quotations/${data.quoteId}`, { headers: reqHeader })
     }
 
     deleteQuote(data){
         var reqHeader = new HttpHeaders({ 'Authorization': 'Bearer ', "secret-token": data.secret});
-        return this.http.delete(`${environment.apiUrl}quotations/${data.quoteId}`, { headers: reqHeader })
+        return this.http.delete(`${environment.apiUrl}/api/quotations/${data.quoteId}`, { headers: reqHeader })
     }
 
     updateQuote(params, body){
         var reqHeader = new HttpHeaders({ 'Authorization': 'Bearer ', "secret-token": params.secret});
-        return this.http.put(`${environment.apiUrl}quotations/${params.quoteId}`, body, { headers: reqHeader })
+        return this.http.put(`${environment.apiUrl}/api/quotations/${params.quoteId}`, body, { headers: reqHeader })
     }
 }

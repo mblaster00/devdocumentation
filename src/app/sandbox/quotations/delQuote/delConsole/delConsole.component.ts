@@ -1,6 +1,7 @@
 import { QuotationsService } from './../../../../../services/quotations.service';
 import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import * as format from "src/app/console.format";
+import { environment } from 'src/environments/environment';
 declare var $: any;
 
 
@@ -10,6 +11,8 @@ declare var $: any;
     styleUrls: ['./delConsole.component.css']
 })
 export class DelConsoleComponent implements OnInit {
+
+    domain: string = environment.apiUrl
 
     constructor(
         private quoteService: QuotationsService,

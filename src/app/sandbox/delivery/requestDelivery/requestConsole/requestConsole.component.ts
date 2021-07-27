@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } fr
 import { DeliveryService, } from 'src/services/delivery.service';
 import * as ace from "ace-builds";
 import * as format from "src/app/console.format";
+import { environment } from 'src/environments/environment';
 declare var $: any;
 
 
@@ -12,6 +13,8 @@ declare var $: any;
 })
 export class RequestConsoleComponent implements OnInit, AfterViewInit {
     @ViewChild("editor") private editor: ElementRef<HTMLElement>;
+
+    domain: string = environment.apiUrl
 
     constructor(
         private deliveryService: DeliveryService,

@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, Renderer2, ViewChild, AfterViewInit } fr
 import * as ace from "ace-builds";
 import * as format from "src/app/console.format";
 import { UsersService } from 'src/services/users.service';
+import { environment } from 'src/environments/environment';
 declare var $: any;
 
 @Component({
@@ -19,6 +20,7 @@ export class RegisterConsoleComponent implements OnInit, AfterViewInit {
     bodyRequest: Object;
     values: string;
     bodyResponse: any;
+    domain: string = environment.apiUrl
     
     constructor(
         private userService: UsersService,

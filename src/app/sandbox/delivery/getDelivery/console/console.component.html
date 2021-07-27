@@ -50,9 +50,9 @@
                     <div id="httpRequest" class="tabcontent">
                         <pre>
                         <code data-bind="text: requestSummary" title="Double click to select all.">
-POST https://localhost:9000/api/keys/:deliveryId HTTP/1.1
-Host: localhost:9000
-deliveryId: {{ deliveryId }}
+POST {{domain}}/api/delivery?deliveryId={{ deliveryId }} HTTP/1.1
+Host: {{domain}}
+Content-Type: {{ contentType }}
 secret-token: {{ secret }}
 <span *ngIf="parameterValue != null" id="parameter"></span>
 {{ bodyRequest }}

@@ -37,8 +37,8 @@
                     <div id="httpRequest" class="tabcontent">
                         <pre>
                         <code data-bind="text: requestSummary" title="Double click to select all.">
-POST http://localhost:9000/api/users/register HTTP/1.1
-Host: localhost:9000
+POST {{domain}}/api/users/register HTTP/1.1
+Host: {{domain}}
 Content-Type: {{ contentType }}
 <span *ngIf="parameterValue != null" id="parameter"></span>
 {{ bodyRequest }}

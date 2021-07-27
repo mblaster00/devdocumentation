@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
     selector: 'app-delDelivery',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./delDelivery.component.css']
 })
 export class DelDeliveryComponent implements OnInit {
+
+    domain: string = environment.apiUrl
 
     constructor() { }
 

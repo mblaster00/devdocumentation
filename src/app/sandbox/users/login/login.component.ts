@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
     selector: 'app-login',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
+    domain: string = environment.apiUrl
 
     constructor() { }
 

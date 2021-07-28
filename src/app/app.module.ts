@@ -8,7 +8,6 @@ import { HeaderComponent } from "./common/header/header.component";
 import { FooterComponent } from "./common/footer/footer.component";
 
 import { HttpClientInMemoryWebApiModule } from "angular-in-memory-web-api";
-import { DataService } from "./data.service";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { ToastrModule } from "ngx-toastr";

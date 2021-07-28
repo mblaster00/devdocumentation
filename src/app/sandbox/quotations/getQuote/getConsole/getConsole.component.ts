@@ -64,9 +64,9 @@ export class GetConsoleComponent implements OnInit {
         }
         this.quoteService.getQuote(data).subscribe(res => {
             this.bodyResponse = res;
-            $(".panel:last").append(format.html.getQuote(this.bodyResponse));
+            $(".panel:last").append(format.html.read(this.bodyResponse));
         }, err => {
-            $(".panel:last").append(format.html.Error(err));
+            $(".panel:last").append(format.html.error(err));
         })
     }
 

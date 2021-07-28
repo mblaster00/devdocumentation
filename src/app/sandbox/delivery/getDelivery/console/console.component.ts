@@ -64,9 +64,9 @@ export class ConsoleComponent implements OnInit {
         }
         this.deliveryService.getDelivery(data).subscribe(res => {
             this.bodyResponse = res;
-            $(".panel:last").append(format.html.getDelivery(this.bodyResponse));
+            $(".panel:last").append(format.html.read(this.bodyResponse));
         }, err => {
-            $(".panel:last").append(format.html.Error(err));
+            $(".panel:last").append(format.html.error(err));
         })
     }
 

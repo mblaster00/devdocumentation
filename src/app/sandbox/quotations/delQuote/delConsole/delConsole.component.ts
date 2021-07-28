@@ -66,9 +66,9 @@ export class DelConsoleComponent implements OnInit {
         }
         this.quoteService.deleteQuote(data).subscribe(res => {
             this.bodyResponse = res;
-            $(".panel:last").append(format.html.delQuote(this.bodyResponse));
+            $(".panel:last").append(format.html.deletion(this.bodyResponse));
         }, err => {
-            $(".panel:last").append(format.html.Error(err));
+            $(".panel:last").append(format.html.error(err));
         })
     }
 }

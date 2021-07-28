@@ -81,7 +81,7 @@ export class PutConsoleComponent implements OnInit, AfterViewInit {
             this.bodyResponse = res;
             $(".panel:last").append(format.html.response(this.bodyResponse));
         }, err => {
-            $(".panel:last").append(format.html.Error(err));
+            $(".panel:last").append(format.html.error(err));
         })
     }
 }

@@ -58,7 +58,11 @@ POST {{domain}}/api/quotations/requestQuote HTTP/1.1
 Host: {{domain}}
 Content-Type: {{ contentType }}
 secret-token: {{ secret }}
-<span *ngIf="parameterValue != null" id="parameter"></span>
+<span *ngIf="parameterValue != null" id="startDate"></span>
+<span *ngIf="parameterValue != null" id="endDate"></span>
+<span *ngIf="parameterValue != null" id="status"></span>
+<span *ngIf="parameterValue != null" id="idUser"></span>
+<span *ngIf="parameterValue != null" id="limit"></span>
 {{ bodyRequest }}
                         </code></pre>
                     </div>

@@ -20,6 +20,30 @@ export const html = {
         `);
     },
 
+    addParams: function myFunction(index) { 
+        return $(`
+        <div class="row" id="myselect${index}">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <select class="form-control">
+                        <option value="" disabled selected hidden>Name</option>
+                        <option value="startDate">Start Date</option>
+                        <option value="endDate">End Date</option>
+                        <option value="status">Status</option>
+                        <option value="idUser">idUser</option>
+                        <option value="limit">Limit</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <input type="text" class="form-control param${index}" placeholder="Value">
+                </div>
+            </div>
+        </div>
+        `);
+    },
+
     response: function myFunction(bodyResponse) {
         return $(`
         <div id="httpResponse"><br>

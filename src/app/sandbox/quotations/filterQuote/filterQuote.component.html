@@ -1,0 +1,111 @@
+<div class="card">
+  <div class="card-header">
+    <h2>Quotations</h2>
+  </div>
+  <div class="card-body pt-0"><br>
+    <p>This operation is used to request a quotation and obtain more information about the pricing.</p>
+    <div class="panel">
+      <h3><b>/requestQuote - POST</b></h3><br>
+      <a class="btn btn-warning" [routerLink]="'console'" id="btnOpenConsole" role="button"> Try it</a>
+    </div>
+    <div class="panel">
+      <h4><b> Request URL</b></h4>
+      <label>{{domain}}/api/quotations/requestQuote</label>
+    </div>
+    <div class="panel">
+      <h4><b>Request headers</b></h4>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-md-3">
+              <label>Content-Type </label>
+              <span class="text-muted"> (optional)</span>
+            </div>
+            <div class="col-md-1">
+              string
+            </div>
+            <div class="col-md-8">
+              Media type of the body sent to the API.
+            </div>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-md-3">
+              <label>secret-token </label>
+            </div>
+            <div class="col-md-1">
+              string
+            </div>
+            <div class="col-md-8">
+              Subscription key which provides access to this API. Found in your <b>Profile</b>.
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h4><b> Request body</b></h4>
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active">
+          <a href="#requesttab1" role="tab" data-toggle="tab">
+            application/json
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h4><b> Responses</b></h4>
+      <label class="text-success">201 Created</label>
+    </div>
+    <div class="panel">
+      <h4><b>Representations</b></h4>
+      <div role="tabpanel">
+        <div class="tab">
+          <button class="tablinks" (click)="openCity($event, 'Sample')">Sample</button>
+          <button class="tablinks" (click)="openCity($event, 'Schema')">Schema</button>
+        </div>
+        <div id="Sample" class="tabcontent">
+          <pre><code class="json"><span class="http">
+{{ '{' }}
+    "pickupLocationCountry": "string",
+    "pickupLocationAddress": "string",
+    "dropoffLocationCountry": "string",
+    "dropoffLocationAddress": "string",
+    "itemsCurrencyCode": "string",
+    "items": [
+        {{ '{' }} 
+            "label": "string", 
+            "quantity": "number", 
+            "price": "number", 
+            "weight": "number", 
+            "size": [] 
+        {{ '}' }},
+    ]
+{{ '}' }}
+                    </span></code></pre>
+        </div>
+
+        <div id="Schema" class="tabcontent">
+          <pre><code class="json"><span class="http">
+{{ '{' }}
+    "pickupLocationCountry": "FRANCE",
+    "pickupLocationAddress": "PARIS",
+    "dropoffLocationCountry": "USA'",
+    "dropoffLocationAddress": "ATLANTA",
+    "itemsCurrencyCode": "USD",
+    "items": [
+        {{ '{' }} "label": "telephone", "quantity": 1, "price": 900, "weight": 0.5, "size": [] {{ '}' }},
+        {{ '{' }} "label": "sac", "quantity": 2, "price": 20, "weight": 0.8, "size": [] {{ '}' }}
+    ]
+{{ '}' }}
+                    </span></code></pre>
+        </div>
+      </div>
+    </div>
+
+    <h4 class="card-title"><b> Code samples</b></h4>
+    <div class="tab-content">
+      <iframe src="//api.apiembed.com/?source=https://logidoo.s3.us-east-2.amazonaws.com/quotations.json&targets=shell:curl,node:unirest,java:unirest,python:requests,php:curl,ruby:native,objc:nsurlsession,go:native,javascript:jquery,node:native,node:request,python:python3" frameborder="0" scrolling="no" width="100%" height="500px" seamless></iframe>
+    </div>
+  </div>

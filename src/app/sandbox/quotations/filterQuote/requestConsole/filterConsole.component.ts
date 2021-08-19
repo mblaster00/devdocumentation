@@ -7,10 +7,10 @@ declare var $: any;
 
 @Component({
     selector: 'app-requestConsole',
-    templateUrl: './requestConsole.component.html',
-    styleUrls: ['./requestConsole.component.css']
+    templateUrl: './filterConsole.component.html',
+    styleUrls: ['./filterConsole.component.css']
 })
-export class RequestConsoleComponent implements OnInit, AfterViewInit {
+export class FilterConsoleComponent implements OnInit, AfterViewInit {
     @ViewChild("editor") private editor: ElementRef<HTMLElement>;
 
     constructor(

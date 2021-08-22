@@ -10,7 +10,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { DeliveryComponent } from './delivery.component';
 import { ConsoleComponent } from './getDelivery/console/console.component';
 import { FilterDeliveryComponent } from './filterDelivery/filterDelivery.component';
-import { FilterConsoleComponent } from './filterDelivery/requestConsole/filterConsole.component';
+import { FilterConsoleComponent } from './filterDelivery/filterConsole/filterConsole.component';
 
 const routes: Routes = [
 	{

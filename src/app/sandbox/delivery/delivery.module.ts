@@ -12,7 +12,7 @@ import { PutConsoleComponent } from './putDelivery/putConsole/putConsole.compone
 import { DelDeliveryComponent } from './delDelivery/delDelivery.component';
 import { DelConsoleComponent } from './delDelivery/delConsole/delConsole.component';
 import { FilterDeliveryComponent } from './filterDelivery/filterDelivery.component';
-import { FilterConsoleComponent } from './filterDelivery/requestConsole/filterConsole.component';
+import { FilterConsoleComponent } from './filterDelivery/filterConsole/filterConsole.component';
 
 @NgModule({
   declarations: [

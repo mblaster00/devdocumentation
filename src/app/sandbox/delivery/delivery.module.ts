@@ -11,6 +11,8 @@ import { PutDeliveryComponent } from './putDelivery/putDelivery.component';
 import { PutConsoleComponent } from './putDelivery/putConsole/putConsole.component';
 import { DelDeliveryComponent } from './delDelivery/delDelivery.component';
 import { DelConsoleComponent } from './delDelivery/delConsole/delConsole.component';
+import { FilterDeliveryComponent } from './filterDelivery/filterDelivery.component';
+import { FilterConsoleComponent } from './filterDelivery/requestConsole/filterConsole.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { DelConsoleComponent } from './delDelivery/delConsole/delConsole.compone
     RequestConsoleComponent,
     GetDeliveryComponent,
     ConsoleComponent,
+    FilterDeliveryComponent,
+    FilterConsoleComponent,
     PutDeliveryComponent,
     PutConsoleComponent,
     DelDeliveryComponent,

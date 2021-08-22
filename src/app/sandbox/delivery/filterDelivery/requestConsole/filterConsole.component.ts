@@ -1,9 +1,10 @@
 import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
-import { QuotationsService, } from 'src/services/quotations.service';
+import { DeliveryService, } from 'src/services/delivery.service';
 import * as ace from "ace-builds";
 import * as format from "src/app/console.format";
 import { environment } from 'src/environments/environment';
 declare var $: any;
+
 
 @Component({
     selector: 'app-requestConsole',
@@ -11,20 +12,19 @@ declare var $: any;
     styleUrls: ['./filterConsole.component.css']
 })
 export class FilterConsoleComponent implements OnInit {
-    @ViewChild("editor") private editor: ElementRef<HTMLElement>;
 
     constructor(
-        private quotationService: QuotationsService,
-        private elementRef: ElementRef
+        private deliveryService: DeliveryService,
+        private elementRef: ElementRef, private renderer: Renderer2
     ) { }
 
-    ngOnInit() { }
+    ngOnInit() {
+    }
 
     parameterName: string;
     parameterValue: string;
     startValue: string;
     endValue: string;
-    statusValue: string;
     limitValue: string;
     contentType: string = "application/json";
     secret: string = " ";
@@ -37,17 +37,11 @@ export class FilterConsoleComponent implements OnInit {
     }
 
     checkType(select, type) {
-        $(`#${type} input`).show();
-        $(`#${type} #checked select`).hide();
         if (select == 'startDate') {
             $(`#${type} input`).attr('type', 'date');
         }
         else if (select == 'endDate') {
             $(`#${type} input`).attr('type', 'date');
-        }
-        else if (select == 'status') {
-            $(`#${type} input`).hide();
-            $(`#${type} #checked select`).css('display', 'block');
         }
         else if (select == 'limit') {
             $(`#${type} input`).attr({ "type" : "number", "min" : 1, "max" : 100 });
@@ -63,10 +57,6 @@ export class FilterConsoleComponent implements OnInit {
         else if (this.parameterName == 'endDate') {
             $("#endDate").html(`/${this.parameterValue}`);
         }
-        else if (this.parameterName == 'status') {
-            this.parameterValue = $(`#${idParams} #checked option:selected`).val();
-            $("#status").html(`/${this.parameterValue}`);
-        }
         else if (this.parameterName == 'limit') {
             $("#limit").html(`/${this.parameterValue}`);
         }
@@ -76,7 +66,7 @@ export class FilterConsoleComponent implements OnInit {
         let that = this
         this.nbreParams++;
         let removeButton = $("<div class=\"col-md-3\" style=\"padding: 4px 6px;\" data-bind=\"ifnot: required\"><button style=\"color: #31708f; font-size: 14px; border-radius: 0;\" class=\"btn btn-link\" type=\"button\" id=\"removeParameter\"><i class=\"fa\">&#xf00d;</i> Remove parameter</button></div>");
-        this.elementRef.nativeElement = format.html.quoteParams(this.nbreParams);
+        this.elementRef.nativeElement = format.html.deliveryParams(this.nbreParams);
         $("#buildyourform:last").append(this.elementRef.nativeElement);
         $("#buildyourform:last .row:last").append(removeButton);
         removeButton.click(function () {
@@ -84,7 +74,7 @@ export class FilterConsoleComponent implements OnInit {
             $(this).parent().remove();
             $(`#${idParams}`).empty();
             that.nbreParams--;
-            that.elementRef.nativeElement = format.html.quoteParams(that.nbreParams);
+            that.elementRef.nativeElement = format.html.deliveryParams(that.nbreParams);
             that.parameterName = $(`#myselect${that.nbreParams} option:selected`).val();
         });
         this.elementRef.nativeElement.keyup(function () {
@@ -115,9 +105,6 @@ export class FilterConsoleComponent implements OnInit {
             else if (value == 'endDate') {
                 this.endValue = $(`#myselect${index} input`).val();
             }
-            else if (value == 'status') {
-                this.statusValue = $(`#myselect${index} #checked option:selected`).val();
-            }
             else if (value == 'limit') {
                 this.limitValue = $(`#myselect${index} input`).val();
             }
@@ -133,10 +120,9 @@ export class FilterConsoleComponent implements OnInit {
             secret: this.secret,
             startDate: this.startValue,
             endDate: this.endValue,
-            status: this.statusValue,
             limit: this.limitValue
         }
-        await this.quotationService.filterQuote(data).subscribe(res => {
+        await this.deliveryService.filterDelivery(data).subscribe(res => {
             this.bodyResponse = res;
             $(".panel:last").append(format.html.read(this.bodyResponse));
         }, err => {

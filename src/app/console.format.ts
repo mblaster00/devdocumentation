@@ -1,18 +1,19 @@
 export const html = {
-    fieldWrapper: function myFunction() { 
+    deliveryParams: function myFunction(index) { 
         return $(`
-        <div class="row myselect">
+        <div class="row" id="myselect${index}">
             <div class="col-md-3">
-                <div class="form-group">
+                <div class="form-group" id="params">
                     <select class="form-control">
-                        <option value="" disabled selected hidden>Name</option>
-                        <option value="Authorization">Authorization</option>
-                        <option value="Accept-Encoding">Accept-Encoding</option>
+                        <option value="" disabled selected hidden>Value</option>
+                        <option value="startDate">startDate</option>
+                        <option value="endDate">endDate</option>
+                        <option value="limit">limit</option>
                     </select>
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="form-group">
+                <div class="form-group" id="checked">
                     <input type="text" class="form-control" placeholder="Value">
                 </div>
             </div>
@@ -20,7 +21,7 @@ export const html = {
         `);
     },
 
-    addParams: function myFunction(index) { 
+    quoteParams: function myFunction(index) { 
         return $(`
         <div class="row" id="myselect${index}">
             <div class="col-md-3">

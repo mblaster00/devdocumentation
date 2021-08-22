@@ -22,6 +22,11 @@ export class DeliveryService {
         return this.http.get(`${environment.apiUrl}/api/delivery/${data.deliveryId}`, { headers: reqHeader })
     }
 
+    filterDelivery(data){
+        var reqHeader = new HttpHeaders({ 'Authorization': 'Bearer ', "secret-token": data.secret});
+        return this.http.get(`${environment.apiUrl}/api/delivery/filter/${data.startDate}/${data.endDate}/${data.limit}`, { headers: reqHeader })
+    }
+
     getAll(data){
         var reqHeader = new HttpHeaders({ 'Authorization': 'Bearer ', "x-access-token": data.token});
         return this.http.get(`${environment.apiUrl}/api/delivery/getAll/${data.userId}`, { headers: reqHeader })

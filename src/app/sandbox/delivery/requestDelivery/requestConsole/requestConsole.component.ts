@@ -61,7 +61,7 @@ export class RequestConsoleComponent implements OnInit, AfterViewInit {
             this.bodyResponse = res;
             $(".panel:last").append(format.html.delivery(this.bodyResponse));
         }, err => {
-            console.log(err)
+            $(".panel:last").append(format.html.error(err));
         })
     }
 }

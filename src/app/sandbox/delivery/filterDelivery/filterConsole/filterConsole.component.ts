@@ -126,7 +126,7 @@ export class FilterConsoleComponent implements OnInit {
             this.bodyResponse = res;
             $(".panel:last").append(format.html.read(this.bodyResponse));
         }, err => {
-            console.log(err)
+            $(".panel:last").append(format.html.error(err));
         })
     }
 }

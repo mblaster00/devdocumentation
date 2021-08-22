@@ -10,41 +10,35 @@ declare var $: any;
     templateUrl: './filterConsole.component.html',
     styleUrls: ['./filterConsole.component.css']
 })
-export class FilterConsoleComponent implements OnInit, AfterViewInit {
+export class FilterConsoleComponent implements OnInit {
     @ViewChild("editor") private editor: ElementRef<HTMLElement>;
 
     constructor(
         private quotationService: QuotationsService,
-        private elementRef: ElementRef,
-        private renderer: Renderer2
+        private elementRef: ElementRef
     ) { }
 
     ngOnInit() { }
 
     parameterName: string;
     parameterValue: string;
+    startValue: string;
+    endValue: string;
+    statusValue: string;
+    limitValue: string;
     contentType: string = "application/json";
-    bodyRequest: Object;
     secret: string = " ";
     bodyResponse: any;
     domain: string = environment.apiUrl
     nbreParams: number = 0;
-
-    ngAfterViewInit(): void {
-        ace.config.set('basePath', 'https://unpkg.com/ace-builds@1.4.12/src-noconflict');
-        const aceEditor = ace.edit(this.editor.nativeElement);
-        aceEditor.setTheme('ace/theme/twilight');
-        aceEditor.session.setMode("ace/mode/javascript");
-        aceEditor.on("change", () => {
-            this.bodyRequest = aceEditor.getValue()
-        });
-    }
 
     getToken(event: any) {
         this.secret = event.target.value;
     }
 
     checkType(select, type) {
+        $(`#${type} input`).show();
+        $(`#${type} #checked select`).hide();
         if (select == 'startDate') {
             $(`#${type} input`).attr('type', 'date');
         }
@@ -52,31 +46,29 @@ export class FilterConsoleComponent implements OnInit, AfterViewInit {
             $(`#${type} input`).attr('type', 'date');
         }
         else if (select == 'status') {
-            $(`#${type} input`).attr('type', 'text');
-        }
-        else if (select == 'idUser') {
-            $(`#${type} input`).attr('type', 'text');
+            $(`#${type} input`).hide();
+            $(`#${type} #checked select`).css('display', 'block');
         }
         else if (select == 'limit') {
-            $(`#${type} input`).attr('type', 'number');
+            $(`#${type} input`).attr({ "type" : "number", "min" : 1, "max" : 100 });
         }
     }
 
-    getParams() {
+    getParams(idParams) {
+        this.parameterName = $(`#${idParams} option:selected`).val();
+        this.parameterValue = $(`#${idParams} input`).val();
         if (this.parameterName == 'startDate') {
-            $("#startDate").html(`${this.parameterName} : ${this.parameterValue}<br>`);
+            $("#startDate").html(`/${this.parameterValue}`);
         }
         else if (this.parameterName == 'endDate') {
-            $("#endDate").html(`${this.parameterName} : ${this.parameterValue}<br>`);
+            $("#endDate").html(`/${this.parameterValue}`);
         }
         else if (this.parameterName == 'status') {
-            $("#status").html(`${this.parameterName} : ${this.parameterValue}<br>`);
-        }
-        else if (this.parameterName == 'idUser') {
-            $("#idUser").html(`${this.parameterName} : ${this.parameterValue}<br>`);
+            this.parameterValue = $(`#${idParams} #checked option:selected`).val();
+            $("#status").html(`/${this.parameterValue}`);
         }
         else if (this.parameterName == 'limit') {
-            $("#limit").html(`${this.parameterName} : ${this.parameterValue}`);
+            $("#limit").html(`/${this.parameterValue}`);
         }
     }
 
@@ -97,9 +89,7 @@ export class FilterConsoleComponent implements OnInit, AfterViewInit {
         });
         this.elementRef.nativeElement.keyup(function () {
             let idParams = $(this).attr('id');
-            that.parameterName = $(`#${idParams} option:selected`).val();
-            that.parameterValue = $(`#${idParams} input`).val();
-            that.getParams();
+            that.getParams(idParams);
         });
         this.elementRef.nativeElement.change(function () {
             let idParams = $(this).attr('id');
@@ -111,25 +101,44 @@ export class FilterConsoleComponent implements OnInit, AfterViewInit {
                 let value = $(`#myselect${index} option:selected`).val();
                 listId.push(value);
             }
-            $('.parameter').not(`#${listId[0]}`).not(`#${listId[1]}`).not(`#${listId[2]}`).not(`#${listId[3]}`).empty();
-
-            that.parameterName = $(`#${idParams} option:selected`).val();
-            that.parameterValue = $(`#${idParams} input`).val();
-            that.getParams();
+            $('.parameter').not(`#${listId[0]}`).not(`#${listId[1]}`).not(`#${listId[2]}`).empty();
+            that.getParams(idParams);
         });
     }
 
-    Submit() {
+    checkValue() {
+        for (let index = 1; index <= this.nbreParams; index++){
+            let value = $(`#myselect${index} #params option:selected`).val();
+            if (value == 'startDate') {
+                this.startValue = $(`#myselect${index} input`).val();
+            }
+            else if (value == 'endDate') {
+                this.endValue = $(`#myselect${index} input`).val();
+            }
+            else if (value == 'status') {
+                this.statusValue = $(`#myselect${index} #checked option:selected`).val();
+            }
+            else if (value == 'limit') {
+                this.limitValue = $(`#myselect${index} input`).val();
+            }
+        }
+    }
+
+    async Submit() {
         let selector = $(".panel:last #httpResponse")
         if (selector.length != 0)
             selector.empty()
+        await this.checkValue()
         let data = {
             secret: this.secret,
-            body: this.bodyRequest
+            startDate: this.startValue,
+            endDate: this.endValue,
+            status: this.statusValue,
+            limit: this.limitValue
         }
-        this.quotationService.requestQuote(data).subscribe(res => {
+        await this.quotationService.filterQuote(data).subscribe(res => {
             this.bodyResponse = res;
-            $(".panel:last").append(format.html.quotation(this.bodyResponse));
+            $(".panel:last").append(format.html.read(this.bodyResponse));
         }, err => {
             console.log(err)
         })

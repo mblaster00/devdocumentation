@@ -9,6 +9,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { QuotationsComponent } from './quotations.component';
 import { GetQuoteComponent } from './getQuote/getQuote.component';
 import { GetConsoleComponent } from './getQuote/getConsole/getConsole.component';
+import { FilterQuoteComponent } from './filterQuote/filterQuote.component';
+import { FilterConsoleComponent } from './filterQuote/filterConsole/filterConsole.component';
 
 const routes: Routes = [
 	{
@@ -22,6 +24,14 @@ const routes: Routes = [
 	{
 		path : 'requestQuote/console',
 		component : RequestConsoleComponent
+	},
+	{
+		path : 'filter',
+		component : FilterQuoteComponent
+	},
+	{
+		path : 'filter/console',
+		component : FilterConsoleComponent
 	},
 	{
 		path : 'getQuote',

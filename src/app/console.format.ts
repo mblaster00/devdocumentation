@@ -24,20 +24,25 @@ export const html = {
         return $(`
         <div class="row" id="myselect${index}">
             <div class="col-md-3">
-                <div class="form-group">
+                <div class="form-group" id="params">
                     <select class="form-control">
-                        <option value="" disabled selected hidden>Name</option>
-                        <option value="startDate">Start Date</option>
-                        <option value="endDate">End Date</option>
-                        <option value="status">Status</option>
-                        <option value="idUser">idUser</option>
-                        <option value="limit">Limit</option>
+                        <option value="" disabled selected hidden>Value</option>
+                        <option value="startDate">startDate</option>
+                        <option value="endDate">endDate</option>
+                        <option value="status">status</option>
+                        <option value="limit">limit</option>
                     </select>
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="form-group">
-                    <input type="text" class="form-control param${index}" placeholder="Value">
+                <div class="form-group" id="checked">
+                    <input type="text" class="form-control" placeholder="Value">
+                    <select class="form-control" style="display: none;">
+                        <option value="" disabled selected hidden>Value</option>
+                        <option value="pending">Pending</option>
+                        <option value="confirmed">Confirmed</option>
+                        <option value="cancelled">Cancelled</option>
+                    </select>
                 </div>
             </div>
         </div>

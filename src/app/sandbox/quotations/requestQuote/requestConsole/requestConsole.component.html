@@ -22,11 +22,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div>
-                    <button (click)="addParameter()" id="addParameter" class="btn btn-link" type="button">
-                        <i class="fas fa-plus" aria-hidden="true"></i> Add parameter
-                    </button>
                 </div><br>
                 <h4><b> Headers</b></h4>
                 <div>
@@ -58,7 +53,6 @@ POST {{domain}}/api/quotations/requestQuote HTTP/1.1
 Host: {{domain}}
 Content-Type: {{ contentType }}
 secret-token: {{ secret }}
-<span *ngIf="parameterValue != null" id="startDate" class="parameter"></span><span *ngIf="parameterValue != null" id="endDate" class="parameter"></span><span *ngIf="parameterValue != null" id="status" class="parameter"></span><span *ngIf="parameterValue != null" id="idUser" class="parameter"></span><span *ngIf="parameterValue != null" id="limit" class="parameter"></span>
 {{ bodyRequest }}
                         </code></pre>
                     </div>

@@ -23,6 +23,11 @@ export class QuotationsService {
         return this.http.get(`${environment.apiUrl}/api/quotations/${data.quoteId}`, { headers: reqHeader })
     }
 
+    filterQuote(data){
+        var reqHeader = new HttpHeaders({ 'Authorization': 'Bearer ', "secret-token": data.secret});
+        return this.http.get(`${environment.apiUrl}/api/quotations/filter/${data.startDate}/${data.endDate}/${data.status}/${data.limit}`, { headers: reqHeader })
+    }
+
     deleteQuote(data){
         var reqHeader = new HttpHeaders({ 'Authorization': 'Bearer ', "secret-token": data.secret});
         return this.http.delete(`${environment.apiUrl}/api/quotations/${data.quoteId}`, { headers: reqHeader })

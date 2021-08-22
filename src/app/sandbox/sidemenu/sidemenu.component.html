@@ -49,6 +49,11 @@
 								<span class="badge badge-warning">POST </span> /quotations/requestQuote - POST
 							</a>
 						</li>
+						<li [class.active]="name === 'filterQuote'">
+							<a [routerLink]="'quotations/filter'" (click)="navigate('filterQuote')">
+								<span class="badge badge-success">GET </span> /quotations/filter - GET
+							</a>
+						</li>
 						<li [class.active]="name === 'getQuotation'">
 							<a [routerLink]="'quotations/getQuote'" (click)="navigate('getQuotation')">
 								<span class="badge badge-success">GET </span> /quotation - GET
@@ -80,6 +85,11 @@
 						<li [class.active]="name === 'getDelivery'">
 							<a [routerLink]="'delivery/getDelivery'" (click)="navigate('getDelivery')">
 								<span class="badge badge-success">GET </span> /delivery - GET
+							</a>
+						</li>
+						<li [class.active]="name === 'filterDelivery'">
+							<a [routerLink]="'delivery/filter'" (click)="navigate('filterDelivery')">
+								<span class="badge badge-success">GET </span> /delivery/filter - GET
 							</a>
 						</li>
 						<li [class.active]="name === 'putDelivery'">

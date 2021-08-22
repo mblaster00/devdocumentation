@@ -3,7 +3,7 @@
         <h2>Quotations - Console</h2>
     </div>
     <div class="card-body pt-0"><br>
-        <div>This operation is used to request a quotation and obtain more information about the pricing.</div>
+        <div>This operation is used to get the list of quotations depending on the filter you apply.</div>
         <div class="panel"><br>
             <form name="form" #reset="ngForm" (ngSubmit)="Submit()" class="needs-validation">
                 <h4><b> Query parameters</b></h4>
@@ -46,21 +46,15 @@
                     </div>
                 </div><br>
                 <div>
-                    <h4><b> Request body</b></h4>
-                    <div class="app-ace-editor tabcontent" #editor></div>
-                </div><br>
-                <div>
                     <h4><b> HTTP request</b></h4>
                     <div id="httpRequest" class="tabcontent">
                         <pre>
                         <code data-bind="text: requestSummary" title="Double click to select all.">
-POST {{domain}}/api/quotations/requestQuote HTTP/1.1
+GET {{domain}}/api/quotations/filter<span *ngIf="parameterValue != null" id="startDate" class="parameter"></span><span *ngIf="parameterValue != null" id="endDate" class="parameter"></span><span *ngIf="parameterValue != null" id="status" class="parameter"></span><span *ngIf="parameterValue != null" id="limit" class="parameter"></span> HTTP/1.1
 Host: {{domain}}
 Content-Type: {{ contentType }}
 secret-token: {{ secret }}
-<span *ngIf="parameterValue != null" id="startDate" class="parameter"></span><span *ngIf="parameterValue != null" id="endDate" class="parameter"></span><span *ngIf="parameterValue != null" id="status" class="parameter"></span><span *ngIf="parameterValue != null" id="idUser" class="parameter"></span><span *ngIf="parameterValue != null" id="limit" class="parameter"></span>
-{{ bodyRequest }}
-                        </code></pre>
+                   </code></pre>
                     </div>
                 </div><br>
                 <div class="actions mt-3">

@@ -11,12 +11,16 @@ import { PutQuoteComponent } from './putQuote/putQuote.component';
 import { PutConsoleComponent } from './putQuote/putConsole/putConsole.component';
 import { DelQuoteComponent } from './delQuote/delQuote.component';
 import { DelConsoleComponent } from './delQuote/delConsole/delConsole.component';
+import { FilterQuoteComponent } from './filterQuote/filterQuote.component';
+import { FilterConsoleComponent } from './filterQuote/filterConsole/filterConsole.component';
 
 @NgModule({
   declarations: [
     QuotationsComponent, 
     RequestQuoteComponent, 
     RequestConsoleComponent,
+    FilterQuoteComponent, 
+    FilterConsoleComponent,
     GetQuoteComponent, 
     GetConsoleComponent,
     PutQuoteComponent, 

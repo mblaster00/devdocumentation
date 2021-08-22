@@ -3,14 +3,14 @@
     <h2>Quotations</h2>
   </div>
   <div class="card-body pt-0"><br>
-    <p>This operation is used to request a quotation and obtain more information about the pricing.</p>
+    <p>This operation is used to get the list of quotations and add filter if wished.</p>
     <div class="panel">
-      <h3><b>/requestQuote - POST</b></h3><br>
+      <h3><b>/filter - GET</b></h3><br>
       <a class="btn btn-warning" [routerLink]="'console'" id="btnOpenConsole" role="button"> Try it</a>
     </div>
     <div class="panel">
       <h4><b> Request URL</b></h4>
-      <label>{{domain}}/api/quotations/requestQuote</label>
+      <label>{{domain}}/api/quotations/filter/:startDate?/:endDate?/:status?/:limit?</label>
     </div>
     <div class="panel">
       <h4><b>Request headers</b></h4>
@@ -42,6 +42,58 @@
             </div>
           </div>
         </li>
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-md-3">
+              <label>startDate</label>
+            </div>
+            <div class="col-md-1">
+              date
+            </div>
+            <div class="col-md-8">
+              Filter the quotations on which the creation date will be <b>greater than</b>.
+            </div>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-md-3">
+              <label>endDate</label>
+            </div>
+            <div class="col-md-1">
+              date
+            </div>
+            <div class="col-md-8">
+              Filter the quotations on which the creation date will be <b>less than</b>.
+            </div>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-md-3">
+              <label>status</label>
+            </div>
+            <div class="col-md-1">
+              enum
+            </div>
+            <div class="col-md-8">
+              Filter the quotations on which the status is "<b>pending</b>", "<b>confirmed</b>" or "<b>cancelled</b>".
+            </div>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-md-3">
+              <label>limit</label>
+            </div>
+            <div class="col-md-1">
+              number
+            </div>
+            <div class="col-md-8">
+              Filter the number of quotations that wiil be <b>displayed</b>.
+            </div>
+          </div>
+        </li>
       </ul>
     </div>
     <div class="panel">
@@ -49,63 +101,13 @@
       <ul class="nav nav-tabs" role="tablist">
         <li role="presentation" class="active">
           <a href="#requesttab1" role="tab" data-toggle="tab">
-            application/json
+            None
           </a>
         </li>
       </ul>
     </div>
     <div class="panel">
       <h4><b> Responses</b></h4>
-      <label class="text-success">201 Created</label>
-    </div>
-    <div class="panel">
-      <h4><b>Representations</b></h4>
-      <div role="tabpanel">
-        <div class="tab">
-          <button class="tablinks" (click)="openCity($event, 'Sample')">Sample</button>
-          <button class="tablinks" (click)="openCity($event, 'Schema')">Schema</button>
-        </div>
-        <div id="Sample" class="tabcontent">
-          <pre><code class="json"><span class="http">
-{{ '{' }}
-    "pickupLocationCountry": "string",
-    "pickupLocationAddress": "string",
-    "dropoffLocationCountry": "string",
-    "dropoffLocationAddress": "string",
-    "itemsCurrencyCode": "string",
-    "items": [
-        {{ '{' }} 
-            "label": "string", 
-            "quantity": "number", 
-            "price": "number", 
-            "weight": "number", 
-            "size": [] 
-        {{ '}' }},
-    ]
-{{ '}' }}
-                    </span></code></pre>
-        </div>
-
-        <div id="Schema" class="tabcontent">
-          <pre><code class="json"><span class="http">
-{{ '{' }}
-    "pickupLocationCountry": "FRANCE",
-    "pickupLocationAddress": "PARIS",
-    "dropoffLocationCountry": "USA'",
-    "dropoffLocationAddress": "ATLANTA",
-    "itemsCurrencyCode": "USD",
-    "items": [
-        {{ '{' }} "label": "telephone", "quantity": 1, "price": 900, "weight": 0.5, "size": [] {{ '}' }},
-        {{ '{' }} "label": "sac", "quantity": 2, "price": 20, "weight": 0.8, "size": [] {{ '}' }}
-    ]
-{{ '}' }}
-                    </span></code></pre>
-        </div>
-      </div>
-    </div>
-
-    <h4 class="card-title"><b> Code samples</b></h4>
-    <div class="tab-content">
-      <iframe src="//api.apiembed.com/?source=https://logidoo.s3.us-east-2.amazonaws.com/quotations.json&targets=shell:curl,node:unirest,java:unirest,python:requests,php:curl,ruby:native,objc:nsurlsession,go:native,javascript:jquery,node:native,node:request,python:python3" frameborder="0" scrolling="no" width="100%" height="500px" seamless></iframe>
+      <label class="text-success">200 OK</label>
     </div>
   </div>

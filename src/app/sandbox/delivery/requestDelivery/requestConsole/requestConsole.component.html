@@ -37,11 +37,6 @@
                         </div>
                     </div>
                 </div>
-                <div>
-                    <button (click)="addParameter()" id="addParameter" class="btn btn-link" type="button">
-                        <i class="fas fa-plus" aria-hidden="true"></i> Add parameter
-                    </button><br><br>
-                </div>
                 <h4><b> Headers</b></h4>
                 <div>
                     <div class="row">
@@ -72,7 +67,6 @@ POST {{domain}}/api/delivery/requestDelivery?quoteId={{ quoteId }} HTTP/1.1
 Host: {{domain}}
 Content-Type: {{ contentType }}
 secret-token: {{ token }}
-<span *ngIf="parameterValue != null" id="parameter"></span>
 {{ bodyRequest }}
                         </code></pre>
                     </div>

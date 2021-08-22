@@ -5,6 +5,10 @@
     border-radius: 0;
 }
 
+.hljs-string {
+  color: #c82829;
+}
+
 /* Style the tab */
 .tab {
   overflow: hidden;

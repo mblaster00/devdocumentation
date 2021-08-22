@@ -84,19 +84,20 @@
                     <button class="tablinks" (click)="openCity($event, 'Sample')">Sample</button>
                     <button class="tablinks" (click)="openCity($event, 'Schema')">Schema</button>
                 </div>
+
                 <div id="Sample" class="tabcontent">
                     <pre><code class="json"><span class="http">
-{{ '{' }}
+{{ '{' }}<span class="hljs-string">
     "pickupContactEmail": "string",
     "pickupContactPhoneNumber": "string",
     "dropoffContactFullName": "string",
     "dropoffContactEmail": "string",
-    "dropoffContactPhoneNumber": "string"
-{{ '}' }}
+    "dropoffContactPhoneNumber": "string",
+</span>{{ '}' }}
                     </span></code></pre>
                 </div>
 
-                <div id="Schema" class="tabcontent">
+                <!-- <div id="Schema" class="tabcontent">
                     <pre><code class="json"><span class="http">
 {{ '{' }}
     "pickupContactEmail": "deliver@gmail.com",
@@ -106,12 +107,46 @@
     "dropoffContactPhoneNumber": "+221783243453"
 {{ '}' }}
                     </span></code></pre>
+                </div> -->
+
+
+                <div id="Schema" class="tabcontent">
+                    <pre><code class="json"><span class="http">
+{{ '{' }}
+    <span class="hljs-string">"type": "object",</span>
+    <span class="hljs-string">"properties":</span> {{ '{' }}
+        <span class="hljs-string">"pickupContactEmail":</span> {{ '{' }}
+            <span class="hljs-string">"description": "The contact designated by the email of the person who must be deliver the package."
+            "example": "deliver@gmail.com"</span>
+        {{ '}' }},
+        <span class="hljs-string">"pickupContactPhoneNumber":</span> {{ '{' }}
+            <span class="hljs-string">"description": "The contact designated by the phone number of the person who must be deliver the package."
+            "example": "+221781234453"</span>
+        {{ '}' }},
+        <span class="hljs-string">"dropoffContactFullName":</span> {{ '{' }}
+            <span class="hljs-string">"description": "The contact designated by the name of the person who must be deliver the package."
+            "example": "Recipient"</span>
+        {{ '}' }},
+        <span class="hljs-string">"dropoffContactEmail":</span> {{ '{' }}
+            <span class="hljs-string">"description": "The contact designated by the email of the person who must be deliver the package."
+            "example": "recipient@gmail.com"</span>
+        {{ '}' }}, 
+        <span class="hljs-string">"dropoffContactPhoneNumber":</span> {{ '{' }}
+            <span class="hljs-string">"description": "The contact designated by the phone number of the person who must be deliver the package."
+            "example": "+221783243453"</span>
+        {{ '}' }}, 
+    {{ '}' }},
+{{ '}' }}
+                  </span></code></pre>
                 </div>
+
             </div>
         </div>
 
         <h4 class="card-title"><b> Code samples</b></h4>
         <div class="tab-content">
-            <iframe src="//api.apiembed.com/?source=https://logidoo.s3.us-east-2.amazonaws.com/delivery.json&targets=shell:curl,node:unirest,java:unirest,python:requests,php:curl,ruby:native,objc:nsurlsession,go:native,javascript:jquery,node:native,node:request,python:python3" frameborder="0" scrolling="no" width="100%" height="500px" seamless></iframe>
+            <iframe
+                src="//api.apiembed.com/?source=https://logidoo.s3.us-east-2.amazonaws.com/delivery.json&targets=shell:curl,node:unirest,java:unirest,python:requests,php:curl,ruby:native,objc:nsurlsession,go:native,javascript:jquery,node:native,node:request,python:python3"
+                frameborder="0" scrolling="no" width="100%" height="500px" seamless></iframe>
         </div>
     </div>

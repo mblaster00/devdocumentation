@@ -67,20 +67,20 @@
         </div>
         <div id="Sample" class="tabcontent">
           <pre><code class="json"><span class="http">
-{{ '{' }}
+{{ '{' }}<span class="hljs-string">
     "pickupLocationCountry": "string",
     "pickupLocationAddress": "string",
     "dropoffLocationCountry": "string",
     "dropoffLocationAddress": "string",
     "itemsCurrencyCode": "string",
-    "items": [
-        {{ '{' }} 
+    "items": </span>[
+        {{ '{' }}<span class="hljs-string">
             "label": "string", 
             "quantity": "number", 
             "price": "number", 
             "weight": "number", 
             "size": [] 
-        {{ '}' }},
+        </span>{{ '}' }},
     ]
 {{ '}' }}
                     </span></code></pre>
@@ -89,15 +89,35 @@
         <div id="Schema" class="tabcontent">
           <pre><code class="json"><span class="http">
 {{ '{' }}
-    "pickupLocationCountry": "FRANCE",
-    "pickupLocationAddress": "PARIS",
-    "dropoffLocationCountry": "USA'",
-    "dropoffLocationAddress": "ATLANTA",
-    "itemsCurrencyCode": "USD",
-    "items": [
-        {{ '{' }} "label": "telephone", "quantity": 1, "price": 900, "weight": 0.5, "size": [] {{ '}' }},
-        {{ '{' }} "label": "sac", "quantity": 2, "price": 20, "weight": 0.8, "size": [] {{ '}' }}
-    ]
+  <span class="hljs-string">"type": "object",</span>
+  <span class="hljs-string">"properties":</span> {{ '{' }}
+    <span class="hljs-string">"pickupLocationCountry":</span> {{ '{' }}
+      <span class="hljs-string">"description": "The location designated by the Country where package must be taken for the delivery."
+      "example": "FRANCE" or "FRA"</span>
+    {{ '}' }},
+    <span class="hljs-string">"pickupLocationAddress":</span> {{ '{' }}
+      <span class="hljs-string">"description": "The location designated by the City where package must be taken for the delivery."
+      "example": "PARIS"</span>
+    {{ '}' }},
+    <span class="hljs-string">"dropoffLocationCountry":</span> {{ '{' }}
+      <span class="hljs-string">"description": "The location designated by the Country where package must be received for the delivery."
+      "example": "MAROC" or "MAR"</span>
+    {{ '}' }},
+    <span class="hljs-string">"dropoffLocationAddress":</span> {{ '{' }}
+      <span class="hljs-string">"description": "The location designated by the Country where package must be received for the delivery."
+      "example": "DAKAR"</span>
+    {{ '}' }},
+    <span class="hljs-string">"itemsCurrencyCode":</span> {{ '{' }}
+      <span class="hljs-string">"description": "A three-character (letter) symbol of a currency according to the international ISO standard."
+      "example": "EUR"</span>
+    {{ '}' }},
+    <span class="hljs-string">"items":</span> {{ '{' }}
+      <span class="hljs-string">"description": "Object of attention, concern, or interest that must be delivered."
+      "example": </span>[
+          {{ '{' }} <span class="hljs-string">"label": "phone", "quantity": 1, "price": 150, "weight": 0.5, "size": []</span> {{ '}' }},
+          {{ '{' }} <span class="hljs-string">"label": "bag", "quantity": 2, "price": 10, "weight": 0.8, "size": []</span> {{ '}' }}
+      ]
+    {{ '}' }}
 {{ '}' }}
                     </span></code></pre>
         </div>
